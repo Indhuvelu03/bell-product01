@@ -1,0 +1,140 @@
+/* components/Header.module.css */
+
+.header {
+    background-color: #fff;
+    padding: 20px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logoImage {
+    height: 40px; 
+    width: auto;
+}
+
+/* Desktop Navigation styles */
+.navLinks {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding-right: 0; 
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; 
+}
+
+.navLink {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-heading-dark);
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    
+}
+
+.navLink:hover {
+    color: var(--color-primary-lime); 
+}
+
+.menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-heading-dark);
+    padding: 10px;
+    z-index: 101; 
+}
+
+
+/* ================================================= */
+/* RESPONSIVENESS (Mobile Dropdown Card)             */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    
+    /* Ensure the desktop navigation is completely hidden */
+    .navLinks {
+        display: none;
+        flex-grow: 0;
+    }
+    
+    .navLinks.open {
+        /* CRITICAL ADJUSTMENTS for the Pop-up Card Style */
+        display: block;
+        
+        position: absolute; /* Relative to .navBar which is contained */
+        top: 100%; /* Position right below the header bar */
+        right: 0;
+        
+        width: 200px; /* Specific width for the card */
+        height: auto; 
+        
+        background-color: #fff; 
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Clear card shadow */
+        
+        padding: 15px 0; /* Internal padding */
+        
+        /* Animation: Fade/scale in from the top right */
+        opacity: 0;
+        transform: scale(0.9);
+        transform-origin: top right;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
+        z-index: 99;
+    }
+
+    .navLinks.open {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .navList {
+        flex-direction: column;
+        align-items: flex-start; 
+        gap: 0; /* Links fill entire padding space */
+        margin: 0; 
+        padding: 0; 
+        width: 100%; 
+    }
+    
+    .navItem {
+        width: 100%;
+    }
+
+    .navLink {
+        font-size: 18px; /* Appropriate size for a dropdown menu */
+        font-weight: 500;
+        padding: 10px 20px; /* Padding makes the whole row tappable */
+        display: block; 
+    }
+
+    .navLink:hover {
+        background-color: #f7f7f7; /* Subtle hover effect on the row */
+        color: var(--color-heading-dark);
+    }
+
+    .menuToggle {
+        display: block; 
+    }
+}

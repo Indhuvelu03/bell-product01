@@ -1,0 +1,120 @@
+.footer {
+  background-color: var(--color-primary-lime); /* Yellow background */
+  padding: 20px;
+  
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact, .location {
+  flex: 1;
+}
+
+.logoContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #FFD700 50%, #228B22 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+} */
+
+.logo {
+  text-align: center;
+}
+
+/* .bellLogo {
+  width: 80px;
+  height: 80px;
+} */
+
+/* .brandText {
+  margin-top: 10px;
+} */
+
+/* .pms {
+  color: #0000FF;
+  font-size: 12px;
+  margin: 0;
+}
+
+.bell {
+  color: #FF0000;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+} */
+
+/* .appalam {
+  color: #228B22;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+} */
+
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.terms {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact,
+  .logoContainer,
+  .location {
+    margin-bottom: 20px; /* Add spacing between sections */
+  }
+
+  .logo img {
+    max-width: 80px; /* Reduce logo size on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .contact h3,
+  .location h3 {
+    font-size: 16px;
+  }
+
+  .contact p,
+  .location p {
+    font-size: 13px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+}

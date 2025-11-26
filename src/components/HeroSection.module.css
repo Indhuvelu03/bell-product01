@@ -1,0 +1,168 @@
+/* components/HeroSection.module.css */
+.heroSection {
+  /* Generous desktop padding */
+  padding-top: 100px; 
+  /* Increased separation space at the bottom */
+  padding-bottom: 120px; 
+}
+.heroContent {
+  display: flex; 
+  flex-direction: row; /* Ensure content is side-by-side */
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 50px; 
+}
+/* --- Desktop Default (Image Left, Content Right) --- */
+.heroImageCluster {
+  position: relative; 
+  flex-basis: 50%; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  order: 1; /* Ensure the image appears first (Left) */
+}
+.mainImagePlaceholder {
+  width: 400px; 
+  height: 400px; 
+  background-color: #fdf5e6; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  font-size: 24px; 
+  font-weight: bold;
+  color: #d39644; 
+  box-shadow: 0 0 0 10px #ffdead40; 
+}
+.heroTextContent {
+  flex-basis: 50%; 
+  max-width: 500px;
+  order: 2; /* Ensure the text content appears on the right */
+}
+.heroTextContent h1 {
+  font-size: 48px; 
+  margin-bottom: 25px;
+}
+.heroTextContent p {
+  font-size: 16px; 
+  line-height: 1.6; 
+  color: var(--color-text-body);
+  margin-bottom: 40px;
+}
+.heroActions {
+  display: flex; 
+  gap: 20px;
+}
+
+/* ================================================= */
+/* RESPONSIVENESS                                    */
+/* ================================================= */
+
+/* Tablet View (768px to 1024px): Side-by-Side (Image Left, Content Right) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .heroSection {
+        padding-top: 80px; 
+        /* Increased separation space for tablets */
+        padding-bottom: 100px; 
+    }
+    .heroContent {
+        flex-direction: row; /* Side-by-side */
+        text-align: left;
+        gap: 40px; /* Increased horizontal gap */
+    }
+    .heroImageCluster {
+        order: 1; 
+        flex-basis: 40%; 
+    }
+    .heroTextContent {
+        order: 2;
+        flex-basis: 60%;
+        max-width: 100%;
+    }
+    .heroTextContent h1 {
+        font-size: 36px; /* Optimized tablet heading size */
+        line-height: 1.3;
+    }
+    .heroActions {
+        justify-content: flex-start;
+    }
+    .mainImagePlaceholder {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+/* Mobile View (767px and below): Stacking (Content First, Image Second) */
+@media (max-width: 767px) {
+    .heroSection {
+        padding-top: 50px; 
+        /* Keep mobile padding generous */
+        padding-bottom: 70px; 
+    }
+    .heroContent {
+        flex-direction: column; /* Stacked */
+        text-align: center;
+    }
+    .heroTextContent {
+        order: 1; /* Content First (Top) */
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+    .heroImageCluster {
+        order: 2; /* Image Second (Bottom) */
+    }
+    
+    .heroTextContent h1 {
+        font-size: 30px; /* Optimized mobile heading size */
+        line-height: 1.2; 
+    }
+    
+    .heroTextContent p {
+        /* Reduce paragraph width and center it to reduce congestion */
+        max-width: 90%; 
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7; 
+        margin-bottom: 30px;
+    }
+    
+    /* --- Mobile Button Stacking and Centering --- */
+    .heroActions {
+        justify-content: center;
+        align-items: center; /* Ensures the column elements are centered */
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px; 
+        width: 100%; 
+        padding: 0 40px; 
+    }
+    
+    .heroActions > * {
+        width: 100%; /* Force buttons to take up full width for better centering */
+        display: flex;
+        justify-content: center; /* Center the content (text + icon) inside the button */
+        align-items: center; 
+        position: relative; /* Necessary for the counterweight */
+        padding-left: 15px;
+        padding-right: 15px; 
+    }
+    
+    /* Counterweight for the cart icon in the "Order Food" button */
+    .heroActions > *:first-child::before {
+        content: ""; 
+        width: 25px; /* Must match the width of the icon + its spacing */ 
+        height: 1px; 
+        display: block;
+    }
+    /* ------------------------------------------ */
+
+    .mainImagePlaceholder {
+        width: 300px;
+        height: 300px;
+    }
+}
+@media (max-width: 480px) {
+    .mainImagePlaceholder {
+        width: 250px;
+        height: 250px;
+    }
+}

@@ -1,0 +1,239 @@
+/* components/PopularFood.module.css */
+
+.popularFoodSection {
+    padding-top: 150px; /* Increased top padding */
+    padding-bottom: 150px; /* Increased bottom padding */
+    background-color: #fff;
+}
+
+.sectionTitle {
+    font-size: 68px; /* Default font size for large devices */
+    font-weight: 700;
+    color: var(--color-heading-dark); 
+    text-align: left; /* Align the heading to the left */
+    margin-bottom: 80px; /* Increased bottom margin */
+}
+
+/* Tablet and Mobile: Adjust font size */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 60px; /* Increase font size for tablets */
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 50px; /* Increase font size for mobile devices */
+    margin-bottom: 30px;
+  }
+}
+
+/* --- Category Navigation (Filter Buttons) --- */
+.categoryNav {
+    display: flex;
+    justify-content: center; /* Center buttons on desktop */
+    flex-wrap: wrap; 
+    gap: 15px;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.categoryButton {
+    background-color: #f0f0f0; 
+    color: var(--color-text-body); 
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Essential for horizontal scroll on mobile */
+}
+
+.categoryButton.active {
+    background-color: var(--color-primary-lime); 
+    color: #fff; 
+    font-weight: 600;
+}
+
+.categoryButton:hover:not(.active) {
+    background-color: #e0e0e0;
+}
+
+/* --- Food Cards Grid --- */
+.foodGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Default grid layout */
+    gap: 60px; /* Increased space between grid items */
+    justify-content: center; 
+}
+
+/* Large Devices: Only two grids per row */
+@media (min-width: 1025px) {
+  .foodGrid {
+    grid-template-columns: repeat(2, 1fr); /* Two grids per row */
+  }
+}
+
+.foodCard {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+    overflow: hidden;
+    position: relative; 
+    text-align: left;
+    display: flex; 
+    flex-direction: column; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px; /* Add space below each card */
+}
+
+.foodCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.likeButton {
+    background: rgba(255, 255, 255, 0.8); 
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.likeButton svg {
+    color: #a0a0a0;
+    width: 20px;
+    height: 20px;
+}
+
+.likeButton.liked svg {
+    fill: var(--color-primary-green); 
+    stroke: var(--color-primary-green);
+}
+
+.cardImageWrapper {
+    height: 200px; 
+    overflow: hidden;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
+
+.cardContent {
+    padding: 20px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.foodName {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-heading-dark);
+    margin-bottom: 8px;
+}
+
+.foodDescription {
+    font-size: 14px;
+    color: var(--color-text-body);
+    line-height: 1.5;
+    flex-grow: 1; 
+}
+
+
+/* ================================================= */
+/* RESPONSIVENESS (Mobile View)                      */
+/* ================================================= */
+
+@media (max-width: 768px) {
+    .popularFoodSection {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .sectionTitle {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    /* --- MOBILE HORIZONTAL SCROLL NAV --- */
+    .categoryNav {
+        gap: 10px;
+        margin-bottom: 40px;
+        justify-content: flex-start; /* Align left */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        padding-bottom: 10px; 
+        padding-left: 0; /* Align left edge to container */
+        padding-right: 0;
+        
+        /* Hide scrollbar */
+        -webkit-overflow-scrolling: touch; 
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .categoryNav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categoryButton {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .foodGrid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 20px;
+    }
+
+    .foodName { font-size: 18px; }
+    .foodDescription { font-size: 13px; }
+}
+
+/* Mobile View: Adjust spacing between cards */
+@media (max-width: 768px) {
+  .foodGrid {
+    grid-template-columns: 1fr; /* Single column layout for mobile */
+    gap: 30px; /* Increase space between cards */
+  }
+
+  .foodCard {
+    padding: 15px; /* Add padding inside the card */
+    margin: 0 10px; /* Add horizontal margin to reduce congestion */
+  }
+}
+
+@media (max-width: 480px) {
+    .sectionTitle {
+        font-size: 30px;
+    }
+    .foodGrid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 40px; /* Further increase space between cards for smaller screens */
+    }
+    .foodCard {
+        margin: 0 auto; 
+        max-width: 320px; 
+        padding: 20px; /* Add more padding inside the card */
+        margin: 0 15px; /* Add more horizontal margin */
+    }
+}

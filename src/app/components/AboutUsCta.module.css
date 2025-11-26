@@ -1,0 +1,34 @@
+.aboutUsCta {
+  /* ...existing code... */
+  margin-left: 20px; /* Add white space on the left */
+  margin-right: 20px; /* Add white space on the right */
+  margin-top: 20px; /* Reduced space above the About Us section */
+  margin-bottom: 40px; /* Add more space below the section */
+  /* ...existing code... */
+}
+
+.aboutContent {
+  /* Center-align the text and content */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0; /* Reduce or remove extra space above the content */
+}
+
+.learnMoreBtn {
+  /* Center the button */
+  margin: 20px auto 0;
+  /* ...existing code... */
+  width: 220px; /* Increase the width of the button */
+  font-size: 18px; /* Increase font size for the text */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Add spacing between the text and the icon */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+.heading-font {
+  /* Reduce space above the heading */
+  margin-top: 10px; /* Adjust this value as needed */
+}

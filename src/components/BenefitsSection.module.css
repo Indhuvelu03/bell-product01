@@ -1,0 +1,219 @@
+/* components/BenefitsSection.module.css */
+
+.benefitsSection {
+    /* Generous vertical spacing for overall space */
+    padding-top: 150px; /* Increased top padding */
+    padding-bottom: 150px; /* Increased bottom padding */
+    background-color: #fff;
+}
+
+/* --- Header Styling (Centered, High Prominence) --- */
+.header {
+    text-align: center; 
+    /* Maximized space below header */
+    margin-bottom: 150px; /* Increased space below the header */
+}
+
+.heading {
+    font-size: 68px; 
+    font-weight: 700;
+    color: var(--color-heading-dark); 
+    line-height: 1.1;
+    margin-bottom: 5px; 
+    text-align: left; /* Align the heading to the left */
+    margin-left: 0; /* Remove any centering margin */
+}
+
+.subheading {
+    font-size: 18px;
+    color: var(--color-text-body);
+    margin-top: 0;
+}
+
+/* --- Text Benefits Wrapper (Desktop Default: 4-Column Grid) --- */
+.textBenefitsWrapper {
+    display: grid;
+    /* Desktop Layout (>1024px): 4 columns */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 50px; /* Increased space between benefit cards */
+    padding-top: 0; 
+    margin-bottom: 120px; /* Increased space before the image cluster */
+    align-items: flex-start;
+}
+
+/* Individual Benefit Card (Line above icon) */
+.benefitCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    /* 2px thick horizontal line above the icon */
+    border-top: 2px solid #eee;
+    
+    /* Maximized space between Line and Icon */
+    padding-top: 50px; 
+    padding-bottom: 0; 
+}
+
+.benefitIcon {
+    color: var(--color-heading-dark); 
+    margin-bottom: 15px;
+    width: 30px; 
+    height: 30px;
+}
+
+.benefitCard h3 {
+    font-size: 20px; 
+    font-weight: 600;
+    margin-top: 0; 
+    margin-bottom: 10px;
+    color: var(--color-heading-dark);
+}
+
+.benefitCard p {
+    font-size: 16px;
+    color: var(--color-text-body); 
+    line-height: 1.6;
+}
+
+/* --- Image Cluster Styling (Full Width Below) --- */
+.imageClusterColumn {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.imageClusterColumn div[class$="Placeholder"] {
+    background-color: #f0f0f0; 
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Default height for large desktop screens */
+    min-height: 350px; 
+}
+
+.mainImagePlaceholder {
+    flex: 1.5; 
+    /* Default height for large desktop screens */
+    min-height: 500px; 
+}
+
+.sideImageContainer {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    /* Reduced gap between side images for desktop */
+    gap: 20px; 
+}
+
+.topRightImagePlaceholder {
+    flex: 1; 
+}
+
+.bottomRightImagePlaceholder {
+    flex: 1;
+}
+
+/* ================================================= */
+/* RESPONSIVENESS (Media Queries)                    */
+/* ================================================= */
+
+/* --- EXTRA LARGE DEVICES (1440px and up) --- */
+@media (min-width: 1440px) {
+    .mainImagePlaceholder {
+        /* Reduced large image height for XL screens */
+        min-height: 400px; 
+    }
+    .imageClusterColumn div[class$="Placeholder"] {
+        /* Reduced side image heights for XL screens */
+        min-height: 300px; 
+    }
+}
+
+/* Tablet View (1024px to 769px): 2-Column Grid & Stacked Images */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .benefitsSection {
+        padding-top: 100px; 
+        padding-bottom: 100px;
+    }
+    .header {
+        margin-bottom: 90px; 
+    }
+    .heading {
+        font-size: 56px;
+    }
+    
+    /* Benefits: 2-Column Grid (Tablet only) */
+    .textBenefitsWrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 40px; 
+        padding-top: 0;
+    }
+    .benefitCard {
+        border-top: 2px solid #eee; 
+        padding-top: 40px; 
+    }
+
+    /* Images: Stacked layout for tablet */
+    .imageClusterColumn {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .mainImagePlaceholder {
+        min-height: 380px; 
+    }
+    .sideImageContainer {
+        flex-direction: row; /* Side container images stay horizontal on tablet */
+        gap: 20px;
+        min-height: 250px; 
+    }
+    .topRightImagePlaceholder, .bottomRightImagePlaceholder {
+        min-height: 250px; 
+    }
+}
+
+/* Mobile View (768px and below): 1-Column Stack & Fully Stacked Images */
+@media (max-width: 768px) {
+    .benefitsSection {
+        padding-top: 80px; 
+        padding-bottom: 80px;
+    }
+    .header {
+        margin-bottom: 60px; 
+    }
+    .heading {
+        font-size: 44px; 
+    }
+    
+    /* Benefits: 1-Column Stack (Mobile) */
+    .textBenefitsWrapper {
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+        padding-top: 0;
+    }
+    .benefitCard {
+        border-top: 2px solid #eee; 
+        padding-top: 30px; 
+        padding-bottom: 10px; 
+    }
+    
+    /* Images: Fully Stacked */
+    .imageClusterColumn {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    .mainImagePlaceholder {
+        min-height: 300px;
+    }
+    .sideImageContainer {
+        flex-direction: column; /* Stacks the two side images vertically */
+        gap: 15px;
+    }
+    .topRightImagePlaceholder, .bottomRightImagePlaceholder {
+        min-height: 200px; 
+    }
+}

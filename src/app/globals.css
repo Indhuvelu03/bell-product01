@@ -1,26 +1,113 @@
-@import "tailwindcss";
+/* app/globals.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* --- 1. Reset and Base Styles --- */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- 2. Color Variables (Based on Design) --- */
+:root {
+  --color-primary-lime: #a5df1f; 
+  --color-primary-green: #304905; 
+  --color-heading-dark: #222222;
+  --color-text-body: #666666;
+  --color-light-bg: #f8fff6; 
+}
+
+/* --- 3. Typography --- */
+.heading-font {
+  font-family: 'Playfair Display', Georgia, serif; 
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  color: var(--color-heading-dark);
+}
+
+/* --- 4. Layout Utilities --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+/* --- 5. Reusable Elements --- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background-color: var(--color-primary-green);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color:  #4a6715; 
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: transparent;
+  color: var(--color-heading-dark);
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary-green);
+}
+
+.text-highlight {
+  color: var(--color-primary-lime);
+}
+/* In your global CSS file (e.g., globals.css or utilities.css) */
+
+/* Example Global/Utility CSS */
+
+/* Generous vertical padding for all major sections */
+.section-padding {
+    padding-top: 100px; 
+    padding-bottom: 100px;
+}
+@media (max-width: 1024px) {
+    .section-padding {
+        padding-top: 80px; 
+        padding-bottom: 80px;
+    }
+}
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 60px; 
+        padding-bottom: 60px;
+    }
 }

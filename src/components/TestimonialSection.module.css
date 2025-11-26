@@ -1,0 +1,152 @@
+/* components/TestimonialSection.module.css */
+
+.testimonialSection {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f8f8f8; 
+}
+
+/* --- SECTION TITLE STYLING --- */
+.sectionTitle {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--color-heading-dark, #333); 
+    text-align: left; 
+    margin-bottom: 30px; /* Aligns title vertically with the content block */
+    margin-left: 0; 
+}
+
+/* --- MAIN LAYOUT (50/50 Split on Desktop) --- */
+.contentWrapper {
+    display: grid;
+    /* 1fr 1fr ensures 50% width for the left card and 50% for the right stack */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    align-items: start; /* Ensures cards align to the top of the grid row */
+}
+
+/* --- Base Card Styling --- */
+.mainTestimonialCard, .sideTestimonialCard {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+
+/* --- Card Header (Image and Name Block) --- */
+.cardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.clientImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px; 
+}
+.clientName {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-heading-dark, #333);
+    margin: 0;
+}
+
+/* --- Specific Card Customizations --- */
+
+/* Main Card (Left Column) */
+.mainTestimonialCard {
+    padding: 40px; /* Slightly larger padding for the main card */
+}
+.mainTestimonialCard .clientName {
+    font-size: 24px; /* Larger name font */
+}
+.mainTestimonialCard .testimonialText {
+    font-size: 18px; /* Larger body text */
+}
+
+/* Side Testimonials Wrapper (Right Column) */
+.sideTestimonialsWrapper {
+    display: flex;
+    flex-direction: column; /* Stack side cards vertically */
+    gap: 30px; 
+}
+
+/* General Text & Rating Styles */
+.testimonialText {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.star {
+    color: #ccc; 
+    stroke: #808080; 
+}
+.star.filled {
+    color: #FFD700; 
+    fill: #FFD700;
+    stroke: #FFD700;
+}
+.ratingText {
+    font-size: 14px;
+    color: #777;
+    margin-left: 5px;
+}
+
+/* ================================================= */
+/* RESPONSIVENESS                                    */
+/* ================================================= */
+
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .sectionTitle {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    .contentWrapper {
+        grid-template-columns: 1fr; /* Collapse to Single Column */
+        gap: 40px;
+    }
+    .mainTestimonialCard, .sideTestimonialCard {
+        padding: 30px;
+    }
+    .mainTestimonialCard .clientName {
+        font-size: 20px;
+    }
+    .mainTestimonialCard .testimonialText {
+        font-size: 16px;
+    }
+}
+
+/* Mobile View (max-width: 768px) */
+@media (max-width: 768px) {
+    .sectionTitle {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+    .sideTestimonialsWrapper {
+        gap: 20px; 
+    }
+    /* Stack image and name vertically for better mobile spacing */
+    .cardHeader {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .clientImage {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .clientName {
+        margin-left: 0;
+    }
+    .testimonialText {
+        font-size: 14px;
+    }
+}

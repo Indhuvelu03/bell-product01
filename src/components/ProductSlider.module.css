@@ -1,0 +1,234 @@
+/* components/ProductSlider.module.css */
+
+/* --- Base Styles (Primarily Desktop/Slider View) --- */
+.productSection {
+    padding-top: 150px; /* Increased top padding */
+    padding-bottom: 150px; /* Increased bottom padding */
+    background-color: #fff;
+}
+
+/* --- Section Header (Desktop) --- */
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+.sectionTitle {
+    font-size: 68px; font-weight: 700;
+    color: var(--color-heading-dark); line-height: 1.1; margin: 0; 
+}
+.navigation { display: flex; gap: 15px; }
+.navButton {
+    background-color: #f0f0f0; border: none; border-radius: 50%;
+    width: 50px; height: 50px; display: flex; align-items: center;
+    justify-content: center; cursor: pointer; transition: background-color 0.3s ease;
+}
+.navButton:hover { background-color: var(--color-primary-lime); color: #fff; }
+.navButton svg { color: var(--color-heading-dark); transition: color 0.3s ease; }
+.navButton:hover svg { color: #fff; }
+
+
+/* --- Desktop Layout (Two Columns, Fixed Height Slider) --- */
+.productDisplay {
+    display: flex;
+    gap: 80px; 
+    align-items: flex-start; 
+}
+
+/* Left Column: Product Text Content */
+.productTextContent {
+    flex: 1; 
+    position: relative; 
+    overflow: hidden; 
+    height: 600px; /* FIXED HEIGHT FOR DESKTOP SLIDER */
+    display: block; 
+}
+
+/* Wrapper for vertical text sliding on DESKTOP */
+.textSliderWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+}
+
+/* Individual Text Slide */
+.productDetails {
+    position: absolute; 
+    top: 0; left: 0; width: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    opacity: 0; pointer-events: none; 
+    transform: translateY(100%); 
+    padding-right: 20px; 
+}
+.productDetails.active {
+    opacity: 1; transform: translateY(0); 
+}
+
+/* === KEY FIX: HIDE STATIC CARD IMAGE ON DESKTOP === */
+.productImageStatic {
+    display: none; 
+}
+
+/* Right Column: Image Container (Desktop Slider) */
+.productImageContainer {
+    flex: 1.2; 
+    border-radius: 20px;
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+    position: relative; 
+    height: 600px; /* FIXED HEIGHT FOR DESKTOP SLIDER */
+    display: block; /* VISIBLE on Desktop */
+}
+
+/* Wrapper for horizontal image sliding on DESKTOP */
+.imageSliderWrapper {
+    position: relative; width: 100%; height: 100%; display: flex; 
+}
+
+/* Individual Image Slide */
+.imageSlide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    opacity: 0; pointer-events: none; 
+    transform: translateX(100%); 
+}
+.imageSlide.active {
+    opacity: 1; transform: translateX(0); 
+}
+.productImage {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 20px; 
+}
+
+/* --- Common Text/Button Styles --- */
+.productName { font-size: 48px; font-weight: 600; color: var(--color-primary-lime); margin-bottom: 20px; line-height: 1.2; }
+.productDescription { font-size: 18px; color: var(--color-text-body); line-height: 1.6; margin-bottom: 30px; }
+.featureList { list-style: none; padding: 0; margin-bottom: 40px; }
+.featureList li { display: flex; align-items: flex-start; font-size: 16px; color: var(--color-heading-dark); margin-bottom: 15px; line-height: 1.5; }
+.featureNumber { font-weight: bold; color: var(--color-primary-lime); margin-right: 15px; flex-shrink: 0; width: 30px; }
+.discoverButton {
+    background-color: var(--color-primary-lime); color: #fff; border: none;
+    padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background-color 0.3s ease; display: inline-block;
+    margin-top: 10px; 
+}
+.discoverButton:hover { background-color: var(--color-heading-dark); }
+
+
+/* ================================================= */
+/* RESPONSIVENESS (Card View for Tablet/Mobile)      */
+/* ================================================= */
+
+/* Tablet and Mobile (1024px and below) */
+@media (max-width: 1024px) {
+    .productSection { padding-top: 100px; padding-bottom: 100px; }
+    
+    /* Reset Header (Title left, Nav absolute top-right) */
+    .sectionHeader {
+        flex-direction: column; align-items: flex-start;
+        margin-bottom: 50px; gap: 20px;
+        position: relative; /* Context for absolute navigation */
+    }
+    .sectionTitle { font-size: 56px; }
+    /* Navigation is pushed to the top-right corner of the sectionHeader */
+    .navigation { position: absolute; top: 0; right: 0; }
+    
+    /* Reset Main Container to Stacked Card View */
+    .productDisplay { flex-direction: column; gap: 40px; }
+
+    /* --- KEY: HIDE DESKTOP SLIDER COMPONENTS --- */
+    .productImageContainer {
+        display: none; /* Hide the fixed-height image slider container */
+    }
+    
+    /* --- KEY: RESET TEXT CONTAINER FOR STATIC CARDS --- */
+    .productTextContent {
+        flex: none; position: static; height: auto; min-height: auto;
+        width: 100%; padding-right: 0;
+    }
+    
+    /* Wrapper needs to display all products vertically as cards */
+    .textSliderWrapper {
+        position: static; display: flex; flex-direction: column;
+        gap: 80px; 
+    }
+
+    /* Individual Product Card (Reset to Static Display) */
+    .productDetails {
+        position: static; opacity: 1; pointer-events: auto;
+        transform: none; width: 100%;
+    }
+    
+    /* --- KEY: SHOW IMAGE FOR STATIC CARD VIEW --- */
+    .productImageStatic {
+        display: block; /* SHOW on Tablet/Mobile */
+        width: 100%; height: 350px; object-fit: cover;
+        border-radius: 15px; margin-bottom: 30px;
+    }
+
+    /* Adjust text sizes for tablet */
+    .productName { font-size: 40px; color: var(--color-heading-dark); } 
+    .productDescription { font-size: 17px; }
+}
+
+
+/* Mobile View (768px and below) - Refinements */
+@media (max-width: 768px) {
+    .productSection { padding-top: 80px; padding-bottom: 80px; }
+    .sectionHeader { margin-bottom: 40px; }
+    .sectionTitle { font-size: 44px; }
+
+    /* Reduce gaps between stacked cards */
+    .textSliderWrapper {
+        gap: 60px;
+    }
+    
+    .productImageStatic {
+        height: 250px; 
+        margin-bottom: 20px;
+    }
+
+    .productName { font-size: 32px; }
+    .productDescription { font-size: 16px; }
+    .discoverButton { padding: 12px 25px; }
+}
+
+/* Center Discover More button wrapper */
+.discoverMoreWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Add spacing above the button */
+}
+
+/* Discover More button specific styles */
+.discoverButton {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Add spacing between the text and the icon */
+  padding: 16px 40px;
+  background-color: var(--color-primary-green);
+  color: #fff;
+  border: 2px solid var(--color-primary-green);
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 220px;
+  margin: 20px auto 0; /* Center the button */
+}
+
+.discoverButton:hover {
+  background-color: #4a6715;
+  border-color: #4a6715;
+}
+
+/* Large and Extra-Large Devices */
+@media (min-width: 1025px) {
+  .discoverButton {
+    width: 240px; /* Slightly larger button for large screens */
+    font-size: 20px; /* Increase font size for better visibility */
+    padding: 18px 50px; /* Adjust padding for larger screens */
+  }
+}

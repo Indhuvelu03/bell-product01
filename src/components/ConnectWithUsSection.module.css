@@ -1,0 +1,171 @@
+/* components/ConnectWithUsSection.module.css */
+
+.connectSection {
+    background-color: #fff;
+    /* Uses global section-padding */
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center; /* Center align all block content */
+}
+
+.sectionTitle {
+    font-size: 68px;
+    font-weight: 700; /* Lighter weight as in the image */
+    color: var(--color-heading-dark); 
+    /* From global.css */
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 18px;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    max-width: 650px; /* Constrain width of description */
+    margin: 0 auto 60px auto; /* Center and provide space below */
+}
+
+.formContainer {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    padding: 40px;
+    max-width: 600px; /* Max width for the form container */
+    margin: 0 auto; /* Center the form */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align form elements to the left within container */
+}
+
+.emailLabel {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-heading-dark);
+    margin-bottom: 15px;
+    align-self: flex-start; /* Ensure label is left-aligned */
+}
+
+.emailInput {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--color-text-body);
+    margin-bottom: 30px;
+    transition: border-color 0.3s ease;
+}
+
+.emailInput::placeholder {
+    color: #a0a0a0;
+}
+
+.emailInput:focus {
+    outline: none;
+    border-color: var(--color-primary-lime);
+}
+
+.connectButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%; /* Make button full width of form container */
+    padding: 18px 25px;
+    background-color: var(--color-primary-green);
+    color: #fff; /* Text color as in image */
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.connectButton:hover {
+    /* background-color: #92b93e;  */
+    /* Slightly darker lime on hover */
+    background-color: #4a6715;
+    transform: translateY(-2px);
+}
+
+.arrowIcon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-heading-dark); /* Color matches button text */
+    transition: transform 0.2s ease;
+}
+
+.connectButton:hover .arrowIcon {
+    transform: translateX(3px); /* Small arrow animation on hover */
+}
+
+
+/* ================================================= */
+/* RESPONSIVENESS                                    */
+/* ================================================= */
+
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .sectionTitle {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    .description {
+        font-size: 16px;
+        margin-bottom: 50px;
+        max-width: 550px;
+    }
+    .formContainer {
+        padding: 30px;
+        max-width: 500px;
+    }
+    .emailLabel {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .emailInput {
+        padding: 12px 18px;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+    .connectButton {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    .arrowIcon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Mobile View (max-width: 768px) */
+@media (max-width: 768px) {
+    .connectSection {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .sectionTitle {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .description {
+        font-size: 15px;
+        margin-bottom: 40px;
+        padding: 0 15px; /* Add horizontal padding for smaller screens */
+    }
+    .formContainer {
+        padding: 25px;
+        max-width: 90%; /* Allow form to take more width on small screens */
+    }
+    .emailLabel {
+        font-size: 16px;
+    }
+    .emailInput {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .connectButton {
+        font-size: 15px;
+    }
+}
