@@ -1,134 +1,149 @@
 /* components/FAQSection.module.css */
 
 .faqSection {
-    /* Uses the global utility for padding */
-    background-color: #fff;
+    padding: 80px 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sectionSubtitle {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a472a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    padding: 6px 16px;
+    background: rgba(26, 71, 42, 0.1);
+    border-radius: 20px;
 }
 
 .sectionTitle {
-    font-size: 68px;
-    font-weight: 700; 
-    color: var(--color-heading-dark); 
-    text-align: left;
-    margin-bottom: 100px; 
-    
-    line-height: 1.2;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a472a;
+    margin: 0;
 }
 
 .faqGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 60px; 
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .faqItem {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
+    position: relative;
+    padding: 30px 0;
 }
 
 .faqDivider {
-    width: 90%; 
-    border: none;
-    border-top: 1px solid #dcdcdc; 
-    margin: 0 0 10px 0; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(26, 71, 42, 0.2), transparent);
+}
+
+.faqContent {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
 }
 
 .faqNumber {
-    font-size: 90px; 
-    font-weight: 400;
-    color: #bdbdbd; 
-    margin: 0 0 20px 0; 
-    line-height: 1; 
-   
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a472a;
+    line-height: 1;
+    min-width: 80px;
+}
+
+.faqText {
+    flex: 1;
 }
 
 .faqQuestion {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-heading-dark);
-    margin: 0 0 15px 0;
+    color: #1a472a;
+    margin: 0 0 12px 0;
     line-height: 1.4;
-   
 }
 
 .faqAnswer {
-    font-size: 16px;
-    color: var(--color-text-body);
-    line-height: 1.6;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
     margin: 0;
-    
 }
 
 .contactDetail {
-    font-weight: 600;
-    color: var(--color-heading-dark);
+    color: #1a472a;
+    font-weight: 500;
 }
 
-/* --- NEW IMAGE STYLES --- */
 .imageContainer {
-    margin-top: 100px; /* --- IMPORTANT: More space between FAQ grid and image --- */
-    text-align: center; /* Center the image if it's smaller than its container */
+    margin-top: 60px;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .bottomImage {
-    max-width: 100%; /* Ensure image is responsive */
-    height: auto;
-    border-radius: 12px; /* Soft rounded corners as in the example food image */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
-    display: block; /* Remove extra space below image */
-    margin: 0 auto; /* Center the image if it has max-width < 100% */
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
 }
 
-
-/* ================================================= */
-/* RESPONSIVENESS                                    */
-/* ================================================= */
-
-/* Tablet View (max-width: 1024px) */
-@media (max-width: 1024px) {
-    .sectionTitle {
-        font-size: 50px;
-        margin-bottom: 80px; 
-    }
-    .faqGrid {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 40px;
-    }
-    .faqDivider {
-        width: 100%;
-    }
-    .faqNumber {
-        font-size: 70px;
-    }
-    .faqQuestion {
-        font-size: 18px;
-    }
-    .imageContainer {
-        margin-top: 80px; /* Adjust spacing for tablet */
-    }
-}
-
-/* Mobile View (max-width: 768px) */
+/* Responsive */
 @media (max-width: 768px) {
     .sectionTitle {
-        font-size: 40px;
-        margin-bottom: 60px; 
+        font-size: 2rem;
     }
-    .faqGrid {
-        grid-template-columns: 1fr; 
-        gap: 50px; 
+
+    .faqContent {
+        flex-direction: column;
+        gap: 12px;
     }
-    .faqDivider {
-        width: 100%;
-    }
+
     .faqNumber {
-        font-size: 60px;
+        font-size: 2rem;
+        min-width: auto;
     }
+
     .faqQuestion {
-        font-size: 17px;
+        font-size: 1.1rem;
     }
-    .imageContainer {
-        margin-top: 60px; /* Adjust spacing for mobile */
+
+    .bottomImage {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faqSection {
+        padding: 60px 0;
+    }
+
+    .sectionTitle {
+        font-size: 1.75rem;
+    }
+
+    .faqItem {
+        padding: 24px 0;
+    }
+
+    .bottomImage {
+        height: 220px;
     }
 }

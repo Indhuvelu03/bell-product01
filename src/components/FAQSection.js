@@ -1,5 +1,7 @@
 // components/FAQSection.js
+"use client";
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './FAQSection.module.css';
 
 const faqs = [
@@ -28,33 +30,119 @@ const faqs = [
   },
 ];
 
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut" 
+    }
+  }
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.5, 
+      ease: "easeOut" 
+    }
+  }
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { 
+      duration: 0.7, 
+      ease: "easeOut",
+      delay: 0.4
+    }
+  }
+};
+
 const FAQSection = () => {
   return (
-    <section className={`${styles.faqSection} section-padding`}>
+    <motion.section 
+      className={`${styles.faqSection} section-padding`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      variants={sectionVariants}
+    >
       <div className="container">
-        <h2 className={styles.sectionTitle}>FAQ</h2>
+        <motion.div 
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <span className={styles.sectionSubtitle}>Got Questions?</span>
+          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+        </motion.div>
 
-        <div className={styles.faqGrid}>
+        <motion.div 
+          className={styles.faqGrid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.1 }}
+          variants={containerVariants}
+        >
           {faqs.map((faq, index) => (
-            <div key={index} className={styles.faqItem}>
-              <hr className={styles.faqDivider} /> 
-              <h3 className={styles.faqNumber}>{faq.number}</h3>
-              <h4 className={styles.faqQuestion}>{faq.question}</h4>
-              <p className={styles.faqAnswer}>{faq.answer}</p>
-            </div>
+            <motion.div 
+              key={index} 
+              className={styles.faqItem}
+              variants={itemVariants}
+              whileHover={{ x: 10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className={styles.faqDivider}></div>
+              <div className={styles.faqContent}>
+                <span className={styles.faqNumber}>{faq.number}</span>
+                <div className={styles.faqText}>
+                  <h4 className={styles.faqQuestion}>{faq.question}</h4>
+                  <p className={styles.faqAnswer}>{faq.answer}</p>
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* --- NEW IMAGE ADDITION --- */}
-        <div className={styles.imageContainer}>
+        {/* --- Image Section --- */}
+        {/* <motion.div 
+          className={styles.imageContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={imageVariants}
+        >
           <img 
-            src="https://via.placeholder.com/1200x600/f0f0f0/333?text=Delicious+Appalam+Meal" 
-            alt="Delicious Appalam Meal" 
+            src="https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+            alt="Bell Brand Products" 
             className={styles.bottomImage} 
           />
-        </div>
+        </motion.div> */}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

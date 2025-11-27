@@ -1,171 +1,268 @@
 /* components/ConnectWithUsSection.module.css */
 
 .connectSection {
-    background-color: #fff;
-    /* Uses global section-padding */
-    padding-top: 100px;
-    padding-bottom: 100px;
-    text-align: center; /* Center align all block content */
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fdf9 0%, #e8f5e9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.connectSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(26, 71, 42, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.connectSection::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(26, 71, 42, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Text Content */
+.textContent {
+  color: #1a472a;
+}
+
+.subtitle {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a472a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  background: rgba(26, 71, 42, 0.1);
+  border-radius: 20px;
 }
 
 .sectionTitle {
-    font-size: 68px;
-    font-weight: 700; /* Lighter weight as in the image */
-    color: var(--color-heading-dark); 
-    /* From global.css */
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a472a;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
 }
 
 .description {
-    font-size: 18px;
-    color: var(--color-text-body);
-    line-height: 1.6;
-    max-width: 650px; /* Constrain width of description */
-    margin: 0 auto 60px auto; /* Center and provide space below */
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Form Wrapper */
+.formWrapper {
+  background: #1a472a;
+  padding: 40px;
+  border: none;
 }
 
 .formContainer {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow */
-    padding: 40px;
-    max-width: 600px; /* Max width for the form container */
-    margin: 0 auto; /* Center the form */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align form elements to the left within container */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.emailLabel {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-heading-dark);
-    margin-bottom: 15px;
-    align-self: flex-start; /* Ensure label is left-aligned */
+.inputWrapper {
+  display: flex;
+  gap: 0;
+  background: #ffffff;
+  padding: 6px;
 }
 
 .emailInput {
-    width: 100%;
-    padding: 15px 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    color: var(--color-text-body);
-    margin-bottom: 30px;
-    transition: border-color 0.3s ease;
+  flex: 1;
+  padding: 16px 20px;
+  font-size: 1rem;
+  color: #333;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
 }
 
 .emailInput::placeholder {
-    color: #a0a0a0;
-}
-
-.emailInput:focus {
-    outline: none;
-    border-color: var(--color-primary-lime);
+  color: #999;
 }
 
 .connectButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%; /* Make button full width of form container */
-    padding: 18px 25px;
-    background-color: var(--color-primary-green);
-    color: #fff; /* Text color as in image */
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a472a;
+  background: #f7e135;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .connectButton:hover {
-    /* background-color: #92b93e;  */
-    /* Slightly darker lime on hover */
-    background-color: #4a6715;
-    transform: translateY(-2px);
+  background: #1a472a;
+  color: #f7e135;
 }
 
 .arrowIcon {
-    width: 20px;
-    height: 20px;
-    stroke: var(--color-heading-dark); /* Color matches button text */
-    transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .connectButton:hover .arrowIcon {
-    transform: translateX(3px); /* Small arrow animation on hover */
+  transform: translateX(5px);
 }
 
+.privacyText {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
 
-/* ================================================= */
+/* Quick Contact */
+.quickContact {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.contactItem svg {
+  color: #f7e135;
+}
+
+/* WhatsApp Container */
+.whatsappContainer {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.whatsappTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f7e135;
+  margin: 0 0 12px 0;
+}
+
+.whatsappDescription {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+}
+
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #25D366;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsappButton:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+}
+
+.whatsappButton svg {
+  flex-shrink: 0;
+}
+
 /* RESPONSIVENESS                                    */
 /* ================================================= */
 
 /* Tablet View (max-width: 1024px) */
 @media (max-width: 1024px) {
-    .sectionTitle {
-        font-size: 50px;
-        margin-bottom: 15px;
-    }
-    .description {
-        font-size: 16px;
-        margin-bottom: 50px;
-        max-width: 550px;
-    }
-    .formContainer {
-        padding: 30px;
-        max-width: 500px;
-    }
-    .emailLabel {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-    .emailInput {
-        padding: 12px 18px;
-        font-size: 15px;
-        margin-bottom: 25px;
-    }
-    .connectButton {
-        padding: 15px 20px;
-        font-size: 16px;
-    }
-    .arrowIcon {
-        width: 18px;
-        height: 18px;
-    }
+  .contentWrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+  
+  .quickContact {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 /* Mobile View (max-width: 768px) */
 @media (max-width: 768px) {
-    .connectSection {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-    .sectionTitle {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-    .description {
-        font-size: 15px;
-        margin-bottom: 40px;
-        padding: 0 15px; /* Add horizontal padding for smaller screens */
-    }
-    .formContainer {
-        padding: 25px;
-        max-width: 90%; /* Allow form to take more width on small screens */
-    }
-    .emailLabel {
-        font-size: 16px;
-    }
-    .emailInput {
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-    .connectButton {
-        font-size: 15px;
-    }
+  .connectSection {
+    padding: 60px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .formWrapper {
+    padding: 30px;
+  }
+  
+  .inputWrapper {
+    flex-direction: column;
+  }
+  
+  .connectButton {
+    justify-content: center;
+  }
+}
+
+/* Extra Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+  
+  .formWrapper {
+    padding: 24px;
+  }
+  
+  .quickContact {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
 }

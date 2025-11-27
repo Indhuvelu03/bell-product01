@@ -9,17 +9,23 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import PopularFood from '../components/PopularFood';
 import FAQSection from '@/components/FAQSection';
 import ConnectWithUsSection from '@/components/ConnectWithUsSection';
+import ShuffleHero from '@/components/SuffleHero';
+import { SmoothScrollHero } from '@/components/SmoothScrollParallax';
+import HorizontalScrollCarousel from '@/components/HorizontalScrollCarousel';
 
 export default function Home() {
   return (
     <>
       
       <main>
-        <HeroSection />
-        <ProductSnapshotRow />
-        <AboutUsCta />
+        <ShuffleHero />
+        <SmoothScrollHero />
+        {/* <HeroSection /> */}
+        {/* <ProductSnapshotRow /> */}
+        {/* <AboutUsCta /> */}
         <BenefitsSection />
-        <ProductsSection />
+        <HorizontalScrollCarousel />
+        {/* <ProductsSection /> */}
         <PopularFood />
         
         <TestimonialsSection />
