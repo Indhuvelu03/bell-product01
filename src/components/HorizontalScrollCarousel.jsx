@@ -58,7 +58,7 @@ const HorizontalScrollCarousel = () => {
       ref={targetRef}
       style={{
         position: "relative",
-        height: isMobile ? "350vh" : isTablet ? "400vh" : "300vh",
+        height: isMobile ? "300vh" : isTablet ? "400vh" : "300vh",
       }}
     >
       {/* Section Header */}
@@ -67,7 +67,7 @@ const HorizontalScrollCarousel = () => {
           position: "sticky",
           top: 0,
           zIndex: 20,
-          paddingTop: isMobile ? "0.5rem" : "2rem",
+          paddingTop: isMobile ? "0.25rem" : "2rem",
           paddingBottom: isMobile ? "0.25rem" : "1rem",
           textAlign: "center",
         }}
@@ -87,7 +87,7 @@ const HorizontalScrollCarousel = () => {
             fontSize: isMobile ? "1.5rem" : isTablet ? "1.875rem" : "2.25rem",
             fontWeight: "bold",
             color: "black",
-            marginTop: "0.5rem",
+            marginTop: isMobile ? "0.25rem" : "0.5rem",
           }}
         >
           Our Products
@@ -97,9 +97,9 @@ const HorizontalScrollCarousel = () => {
       <div
         style={{
           position: "sticky",
-          top: isMobile ? "3rem" : "6rem",
+          top: isMobile ? "2.5rem" : "6rem",
           display: "flex",
-          height: isMobile ? "calc(100vh - 3rem)" : "calc(100vh - 6rem)",
+          height: isMobile ? "calc(100vh - 2.5rem)" : "calc(100vh - 6rem)",
           alignItems: "center",
           overflow: "hidden",
         }}
