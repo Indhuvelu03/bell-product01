@@ -77,7 +77,7 @@
 }
 
 .navLink:hover {
-    color: #1a472a;
+    color: #76a20e;
 }
 
 .navLinkUnderline {
@@ -86,7 +86,7 @@
     left: 16px;
     right: 16px;
     height: 2px;
-    background: #1a472a;
+    background: #76a20e;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
@@ -99,7 +99,7 @@
 
 .ctaButton {
     padding: 12px 24px;
-    background: #1a472a;
+    background: #76a20e;
     color: #ffffff;
     font-size: 14px;
     font-weight: 600;
@@ -110,7 +110,7 @@
 
 .ctaButton:hover {
     background: #f7e135;
-    color: #1a472a;
+    color: #76a20e;
 }
 
 /* Hamburger Menu */

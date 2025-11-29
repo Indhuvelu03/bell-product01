@@ -32,7 +32,8 @@ a {
 /* --- 2. Color Variables (Based on Design) --- */
 :root {
   --color-primary-lime: #a5df1f; 
-  --color-primary-green: #304905; 
+  /* --color-primary-green: #304905; */
+  --color-primary-green: #76a20e;  
   --color-heading-dark: #222222;
   --color-text-body: #666666;
   --color-light-bg: #f8fff6; 

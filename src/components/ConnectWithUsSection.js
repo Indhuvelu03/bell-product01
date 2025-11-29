@@ -20,6 +20,7 @@ const ConnectWithUsSection = () => {
 
   return (
     <motion.section 
+    id = "connect-with-us"
       className={`${styles.connectSection} section-padding`}
       initial="hidden"
       whileInView="visible"

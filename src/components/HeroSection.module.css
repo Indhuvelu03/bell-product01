@@ -21,7 +21,7 @@
   align-items: center;
   order: 1; /* Ensure the image appears first (Left) */
 }
-.mainImagePlaceholder {
+/* .mainImagePlaceholder {
   width: 400px; 
   height: 400px; 
   background-color: #fdf5e6; 
@@ -33,7 +33,7 @@
   font-weight: bold;
   color: #d39644; 
   box-shadow: 0 0 0 10px #ffdead40; 
-}
+} */
 .heroTextContent {
   flex-basis: 50%; 
   max-width: 500px;

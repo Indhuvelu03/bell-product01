@@ -11,7 +11,7 @@ import { useRef } from "react";
 
 export const SmoothScrollHero = () => {
   return (
-    <div style={{ backgroundColor: '#1a472a' }}>
+    <div style={{ backgroundColor: '#76a20e' }}>
       <ReactLenis
         root
         options={{
@@ -81,7 +81,7 @@ const Hero = () => {
         left: 0,
         right: 0,
         height: '24rem',
-        background: 'linear-gradient(to bottom, transparent, #1a472a)'
+        background: 'linear-gradient(to bottom, transparent, #76a20e)'
       }} />
     </div>
   );

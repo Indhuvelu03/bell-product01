@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "Product Name",
+    // ...existing properties...
+  },
+  {
+    "id": 2,
+    "name": "Another Product",
+    // ...existing properties...
+  }
+  // ...more products...
+]

@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 
 const navLinks = [
   { name: 'About Us', href: '#about-us' },
-  { name: 'Products', href: '#product-slider' },
+  { name: 'Products', href: '#horizontal-scroll-carousel' },
   { name: 'Features', href: '#popular-food' },
   { name: 'Contact', href: '#connect-with-us' },
 ];

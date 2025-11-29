@@ -2,6 +2,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import styles from './PopularFood.module.css';
 
 // --- Data ---
@@ -116,6 +117,7 @@ const cardVariants = {
 };
 
 const PopularFood = () => {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("All");
   const [displayedItems, setDisplayedItems] = useState(initialFoodItems);
   const [allItems, setAllItems] = useState(initialFoodItems);
@@ -134,6 +136,10 @@ const PopularFood = () => {
         item.id === id ? { ...item, liked: !item.liked } : item
       )
     );
+  };
+
+  const handleViewDetails = (productId) => {
+    router.push(`/product/${productId}`);
   };
 
   return (
@@ -244,6 +250,7 @@ const PopularFood = () => {
                   <p className={styles.foodDescription}>{food.description}</p>
                   <motion.button 
                     className={styles.viewButton}
+                    onClick={() => handleViewDetails(food.id)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

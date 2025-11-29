@@ -16,7 +16,7 @@
     display: inline-block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1a472a;
+    color: #f7e135;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 12px;
@@ -28,7 +28,7 @@
 .sectionTitle {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1a472a;
+    color: black;
     margin: 0;
 }
 
@@ -63,7 +63,7 @@
 .faqNumber {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #1a472a;
+    color: #76a20e;
     line-height: 1;
     min-width: 80px;
 }
@@ -75,7 +75,7 @@
 .faqQuestion {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1a472a;
+    color: #76a20e;
     margin: 0 0 12px 0;
     line-height: 1.4;
 }
@@ -88,7 +88,7 @@
 }
 
 .contactDetail {
-    color: #1a472a;
+    color: #ecd52a;
     font-weight: 500;
 }
 

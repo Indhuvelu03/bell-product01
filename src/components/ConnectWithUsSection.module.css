@@ -40,14 +40,14 @@
 
 /* Text Content */
 .textContent {
-  color: #1a472a;
+  color: #f7e135;
 }
 
 .subtitle {
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1a472a;
+  color: #f7e135;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 16px;
@@ -59,7 +59,7 @@
 .sectionTitle {
   font-size: 3rem;
   font-weight: 700;
-  color: #1a472a;
+  color: black;
   margin: 0 0 20px 0;
   line-height: 1.2;
 }
@@ -73,7 +73,7 @@
 
 /* Form Wrapper */
 .formWrapper {
-  background: #1a472a;
+  background: #fff;
   padding: 40px;
   border: none;
 }
@@ -153,12 +153,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.8);
+  color: black;
   font-size: 0.95rem;
 }
 
 .contactItem svg {
-  color: #f7e135;
+  color: #76a20e;
 }
 
 /* WhatsApp Container */
@@ -170,13 +170,13 @@
 .whatsappTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #f7e135;
+  color: #76a20e;
   margin: 0 0 12px 0;
 }
 
 .whatsappDescription {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: black;
   margin: 0 0 24px 0;
   line-height: 1.6;
 }
@@ -198,7 +198,7 @@
 }
 
 .whatsappButton:hover {
-  background: #128C7E;
+  background: #69ea76;
   transform: translateY(-2px);
 }
 

@@ -15,7 +15,7 @@
 }
 
 .heading {
-    font-size: 68px; 
+    font-size: 58px; 
     font-weight: 700;
     color: var(--color-heading-dark); 
     line-height: 1.1;
@@ -56,7 +56,7 @@
 }
 
 .benefitIcon {
-    color: var(--color-heading-dark); 
+    color: #76a20e; 
     margin-bottom: 15px;
     width: 30px; 
     height: 30px;

@@ -54,11 +54,12 @@ const HorizontalScrollCarousel = () => {
 
   return (
     <section
+      id="horizontal-scroll-carousel"
       ref={targetRef}
       style={{
         position: "relative",
         height: isMobile ? "500vh" : isTablet ? "400vh" : "300vh",
-        backgroundColor: "#171717",
+        backgroundColor: "#76a20e",
       }}
     >
       {/* Section Header */}
@@ -70,7 +71,7 @@ const HorizontalScrollCarousel = () => {
           paddingTop: isMobile ? "1.5rem" : "2rem",
           paddingBottom: "1rem",
           textAlign: "center",
-          backgroundColor: "#171717",
+          backgroundColor: "#76a20e",
         }}
       >
         <span
