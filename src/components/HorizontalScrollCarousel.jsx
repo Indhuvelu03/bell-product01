@@ -58,7 +58,7 @@ const HorizontalScrollCarousel = () => {
       ref={targetRef}
       style={{
         position: "relative",
-        height: isMobile ? "400vh" : isTablet ? "400vh" : "300vh",
+        height: isMobile ? "350vh" : isTablet ? "400vh" : "300vh",
       }}
     >
       {/* Section Header */}
@@ -67,8 +67,8 @@ const HorizontalScrollCarousel = () => {
           position: "sticky",
           top: 0,
           zIndex: 20,
-          paddingTop: isMobile ? "1rem" : "2rem",
-          paddingBottom: isMobile ? "0.5rem" : "1rem",
+          paddingTop: isMobile ? "0.5rem" : "2rem",
+          paddingBottom: isMobile ? "0.25rem" : "1rem",
           textAlign: "center",
         }}
       >
@@ -97,9 +97,9 @@ const HorizontalScrollCarousel = () => {
       <div
         style={{
           position: "sticky",
-          top: isMobile ? "4rem" : "6rem",
+          top: isMobile ? "3rem" : "6rem",
           display: "flex",
-          height: isMobile ? "calc(100vh - 4rem)" : "calc(100vh - 6rem)",
+          height: isMobile ? "calc(100vh - 3rem)" : "calc(100vh - 6rem)",
           alignItems: "center",
           overflow: "hidden",
         }}
