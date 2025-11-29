@@ -59,7 +59,7 @@ const HorizontalScrollCarousel = () => {
       style={{
         position: "relative",
         height: isMobile ? "500vh" : isTablet ? "400vh" : "300vh",
-        backgroundColor: "#76a20e",
+        // backgroundColor: "#76a20e",
       }}
     >
       {/* Section Header */}
@@ -71,7 +71,7 @@ const HorizontalScrollCarousel = () => {
           paddingTop: isMobile ? "1.5rem" : "2rem",
           paddingBottom: "1rem",
           textAlign: "center",
-          backgroundColor: "#76a20e",
+          // backgroundColor: "#76a20e",
         }}
       >
         <span
@@ -88,7 +88,7 @@ const HorizontalScrollCarousel = () => {
           style={{
             fontSize: isMobile ? "1.5rem" : isTablet ? "1.875rem" : "2.25rem",
             fontWeight: "bold",
-            color: "white",
+            color: "black",
             marginTop: "0.5rem",
           }}
         >

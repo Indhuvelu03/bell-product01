@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef } from 'react';
+import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './ProductDetails.module.css';
 
 const foodItems = [
@@ -114,169 +114,99 @@ const foodItems = [
 export default function ProductDetails() {
   const params = useParams();
   const router = useRouter();
-  const containerRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
   const product = foodItems.find(item => item.id === parseInt(params.id));
+
+  const similarProducts = foodItems
+    .filter(item => item.category === product?.category && item.id !== product?.id)
+    .slice(0, 3);
 
   if (!product) {
     return (
-      <div className={styles.container}>
-        <div className={styles.notFound}>
-          <h2>Product Not Found</h2>
-          {/* <button onClick={() => router.push('/')} className={styles.backButton}>
-            Go Back Home
-          </button> */}
-        </div>
+      <div className={styles.notFound}>
+        <h2>Product Not Found</h2>
       </div>
     );
   }
 
   return (
-    <div ref={containerRef} className={styles.wrapper}>
-      {/* Back Button */}
-      {/* <motion.button 
-        className={styles.backBtn}
-        onClick={() => router.back()}
-        whileHover={{ x: -5 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back
-      </motion.button> */}
+    <div className={styles.wrapper}>
+      
+      {/* Top Bar */}
+      <div className={styles.topBar}>
+        <button onClick={() => router.back()} className={styles.backBtn}>
+          ← Back
+        </button>
+        <span className={styles.topCategory}>{product.category}</span>
+      </div>
 
-      {/* Hero Section */}
-      <motion.section 
-        className={styles.hero}
-        style={{ opacity }}
-      >
-        <span className={styles.category}>{product.category}</span>
-        <h1 className={styles.title}>{product.name}</h1>
-        <p className={styles.subtitle}>{product.description}</p>
-      </motion.section>
-
-      {/* Image Section */}
-      <section className={styles.imageSection}>
-        <motion.div 
-          className={styles.imageContainer}
-          style={{ y: imageY }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img src={product.image} alt={product.name} className={styles.image} />
-          <div className={styles.priceBox}>
-            <span className={styles.price}>{product.price}</span>
-            <span className={styles.weight}>{product.weight}</span>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Content Section */}
-      <section className={styles.content}>
-        <div className={styles.container}>
-          
-          {/* Description */}
+      {/* Main Product Section */}
+      <div className={styles.mainSection}>
+        <div className={styles.leftCol}>
           <motion.div 
-            className={styles.section}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            className={styles.imgBox}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
           >
-            <h2 className={styles.sectionTitle}>About Product</h2>
-            <p className={styles.description}>{product.fullDescription}</p>
-          </motion.div>
-
-          {/* Benefits */}
-          <motion.div 
-            className={styles.section}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className={styles.sectionTitle}>Benefits</h2>
-            <div className={styles.benefits}>
-              {product.benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.benefit}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                >
-                  <span className={styles.check}>✓</span>
-                  {benefit}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Info Cards */}
-          <div className={styles.infoCards}>
-            <motion.div 
-              className={styles.card}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className={styles.cardTitle}>Ingredients</h3>
-              <p className={styles.cardText}>{product.ingredients}</p>
-            </motion.div>
-
-            <motion.div 
-              className={styles.card}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <h3 className={styles.cardTitle}>Nutrition</h3>
-              <p className={styles.cardText}>{product.nutritionalInfo}</p>
-            </motion.div>
-          </div>
-
-          {/* CTA Buttons */}
-          <motion.div 
-            className={styles.cta}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <motion.button 
-              className={styles.btnHome}
-              onClick={() => {
-                router.push('/#popular-food');
-                setTimeout(() => {
-                  const element = document.getElementById('popular-food');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }, 300);
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 12h18M3 6h18M3 18h18"/>
-              </svg>
-              Back to Products
-            </motion.button>
+            <img src={product.image} alt={product.name} />
           </motion.div>
         </div>
-      </section>
+
+        <div className={styles.rightCol}>
+          <h1 className={styles.prodTitle}>{product.name}</h1>
+          <p className={styles.prodDesc}>{product.description}</p>
+          
+          <div className={styles.priceSection}>
+            <span className={styles.prodPrice}>{product.price}</span>
+            <span className={styles.prodWeight}>{product.weight}</span>
+          </div>
+
+          <div className={styles.detailsBox}>
+            <h3>Product Information</h3>
+            <p>{product.fullDescription}</p>
+          </div>
+
+          <div className={styles.specs}>
+            <div className={styles.specItem}>
+              <strong>Ingredients:</strong>
+              <span>{product.ingredients}</span>
+            </div>
+            <div className={styles.specItem}>
+              <strong>Nutrition:</strong>
+              <span>{product.nutritionalInfo}</span>
+            </div>
+          </div>
+
+          <div className={styles.benefitsBox}>
+            {product.benefits.map((benefit, i) => (
+              <div key={i} className={styles.benefitTag}>
+                {benefit}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Similar Products */}
+      {similarProducts.length > 0 && (
+        <div className={styles.similarSection}>
+          <h2>More from {product.category}</h2>
+          <div className={styles.similarCards}>
+            {similarProducts.map((item) => (
+              <div
+                key={item.id}
+                className={styles.simCard}
+                onClick={() => router.push(`/product/${item.id}`)}
+              >
+                <img src={item.image} alt={item.name} />
+                <div className={styles.simInfo}>
+                  <h4>{item.name}</h4>
+                  <span>{item.price}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
