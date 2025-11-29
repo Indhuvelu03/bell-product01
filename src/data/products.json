@@ -2,11 +2,14 @@
   {
     "id": 1,
     "name": "Product Name",
-    // ...existing properties...
-  },
+    "price": 9.99,
+    "description": "Sample product",
   {
     "id": 2,
     "name": "Another Product",
+    "price": 19.99,
+    "description": "Another sample product",
+]
     // ...existing properties...
   }
   // ...more products...
