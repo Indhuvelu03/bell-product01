@@ -93,7 +93,7 @@ const HorizontalScrollCarousel = () => {
             marginTop: isMobile ? "0.25rem" : "0.5rem",
           }}
         >
-          Our Products
+          Product Gallery
         </h2>
       </div>
 
