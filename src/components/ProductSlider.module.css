@@ -30,9 +30,11 @@
 }
 .sectionSubtitle {
   display: inline-block;
-  font-size: 0.875rem;
+  font-size: 0.875rem;  
+  padding: 6px 16px;
+  background: rgba(62, 63, 63, 0.1);
   font-weight: 600;
-  color: #f7e135;
+  color: #ec2d33;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 12px;

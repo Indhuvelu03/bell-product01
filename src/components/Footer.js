@@ -39,9 +39,9 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className={styles.logo}>
-            <div className={styles.logoCircle}>
+            {/* <div className={styles.logoCircle}>
               <span className={styles.logoText}>B</span>
-            </div>
+            </div> */}
             <div className={styles.brandText}>
               <span className={styles.brandName}>BELL BRAND</span>
               <span className={styles.brandTagline}>Appalam & More</span>

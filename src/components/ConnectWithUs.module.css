@@ -13,13 +13,13 @@
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f7e135;
+  color: #ec2d33;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 12px;
   padding: 6px 16px;
   background: rgba(26, 71, 42, 0.1);
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .sectionTitle {
@@ -289,5 +289,8 @@
   
   .iconWrapper {
     margin: 0 auto;
+  }
+  .whatsappButton{
+    font-size: 20px;
   }
 }

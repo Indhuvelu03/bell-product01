@@ -217,3 +217,12 @@
         min-height: 200px; 
     }
 }
+
+@media (max-width: 480px) {
+    .benefitsSection{
+        /* padding-top: 60px; 
+        padding-bottom: 60px; */
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

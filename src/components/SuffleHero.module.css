@@ -22,10 +22,18 @@
   margin-bottom: 40px;
 }
 
-.heroActions {
+/* .heroActions {
   display: flex;
   gap: 1rem;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+} */
+
+.heroActions {
+    margin-top: 20px;
+    display: flex;
+    /* justify-content: flex-start; */
 }
 
 .shuffleGrid {
@@ -78,5 +86,17 @@
 
   .heroActions button {
     width: 100%;
+    align-items: center;
   }
+}
+@media (max-width: 480px) {
+    
+    .heroActions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .shuffleGrid{
+      margin-top: 10px;
+    }
 }

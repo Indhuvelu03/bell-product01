@@ -7,11 +7,11 @@ import {
   useTransform,
 } from "framer-motion";
 import { FiArrowRight, FiMapPin } from "react-icons/fi";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export const SmoothScrollHero = () => {
   return (
-    <div style={{ backgroundColor: '#76a20e' }}>
+    <div style={{ backgroundColor: '#76a20e', height: '900px' }}>
       <ReactLenis
         root
         options={{
@@ -64,16 +64,16 @@ const Nav = () => {
   );
 };
 
-const SECTION_HEIGHT = 1500;
+const SECTION_HEIGHT = 50;
 
 const Hero = () => {
   return (
     <div
-      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)`, position: 'relative', width: '100%' }}
+      style={{  position: 'relative', width: '100%' }}
     >
-      <CenterImage />
+      {/* <CenterImage /> */}
 
-      <ParallaxImages />
+      {/* <ParallaxImages /> */}
 
       <div style={{
         position: 'absolute',
@@ -81,7 +81,7 @@ const Hero = () => {
         left: 0,
         right: 0,
         height: '24rem',
-        background: 'linear-gradient(to bottom, transparent, #76a20e)'
+        // background: 'linear-gradient(to bottom, transparent, #76a20e)'
       }} />
     </div>
   );
@@ -237,17 +237,31 @@ const Schedule = () => {
 };
 
 const ScheduleItem = ({ title, date, location }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <motion.div
       initial={{ y: 48, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
       style={{
-        marginBottom: '36px',
+        // marginBottom: '36px',
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: isMobile ? 'column' : 'row',
+        alignItems: isMobile ? 'flex-start' : 'center',
         justifyContent: 'space-between',
-        borderBottom: '1px solid #4caf50',
+        gap: isMobile ? '16px' : '0',
+        borderBottom: '0.1px double #ffffffff',
         padding: '0 12px 36px 12px'
       }}
     >
@@ -259,7 +273,7 @@ const ScheduleItem = ({ title, date, location }) => {
         display: 'flex',
         alignItems: 'center',
         gap: '6px',
-        textAlign: 'end',
+        textAlign: isMobile ? 'start' : 'end',
         fontSize: '0.875rem',
         textTransform: 'uppercase',
         color: '#a5d6a7'

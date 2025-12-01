@@ -64,7 +64,7 @@ const HorizontalScrollCarousel = () => {
       {/* Section Header */}
       <div
         style={{
-          position: "sticky",
+          // position: "sticky",
           top: 0,
           zIndex: 20,
           paddingTop: isMobile ? "0.25rem" : "2rem",
@@ -77,7 +77,10 @@ const HorizontalScrollCarousel = () => {
             fontSize: isMobile ? "0.75rem" : "0.875rem",
             textTransform: "uppercase",
             letterSpacing: "0.1em",
-            color: "#eab308",
+            color: "#ec2d33",
+            padding: "6px 16px",
+            fontWeight: "600",
+            background: "rgba(62, 63, 63, 0.1)",
           }}
         >
           What We Offer
@@ -97,7 +100,7 @@ const HorizontalScrollCarousel = () => {
       <div
         style={{
           position: "sticky",
-          top: isMobile ? "2.5rem" : "6rem",
+          top: isMobile ? "1.5rem" : "6rem",
           display: "flex",
           height: isMobile ? "calc(100vh - 2.5rem)" : "calc(100vh - 6rem)",
           alignItems: "center",

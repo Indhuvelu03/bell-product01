@@ -11,6 +11,26 @@ const ShuffleHero = () => {
     }
   };
 
+  const btnstyles = {
+    button: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      backgroundColor: "#80A80A",   // green color similar to your sample
+      color: "white",
+      border: "none",
+      borderRadius: "8px",
+      padding: "10px 24px",
+      // fontSize: "16px",
+      fontWeight: "600",
+      cursor: "pointer",
+      width: "100%",        // makes it responsive
+      maxWidth: "280px",    // prevents it from stretching too large
+      transition: "0.2s",
+    },
+  };
+
   return (
     <section className={styles.heroSection}>
         <div className={styles.heroTextContent}>
@@ -22,8 +42,8 @@ const ShuffleHero = () => {
             from Cambodia chat you can try at this place and get a good price from us as well 
             we will make a good impact to our customers
           </p>
-          <div className={styles.heroActions} style={{ marginTop: '20px' }}>
-            <button 
+          <div className={styles.heroActions}>
+            {/* <button 
               className="btn-primary"
               onClick={() => scrollToSection('connect-with-us')}
             >
@@ -31,13 +51,29 @@ const ShuffleHero = () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
-            </button>
-            <button 
-              className="btn-secondary"
-              onClick={() => scrollToSection('about-us')}
+            </button> */}
+
+            {/* <button
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                backgroundColor: "#80A80A",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                padding: "10px 24px",
+                fontWeight: "600",
+                cursor: "pointer",   // 👈 inline here
+                width: "100%",
+                maxWidth: "280px",
+                transition: "0.2s",
+              }}
             >
-              Learn More
-            </button>
+              Get in Touch <span style={{ fontSize: "18px" }}>➜</span>
+            </button> */}
+
           </div>
         </div>
         <ShuffleGrid />

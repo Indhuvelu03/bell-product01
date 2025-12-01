@@ -250,7 +250,7 @@ const PopularFood = () => {
                   <p className={styles.foodDescription}>{food.description}</p>
                   <motion.button 
                     className={styles.viewButton}
-                    onClick={() => handleViewDetails(food.id)}
+                    // onClick={() => handleViewDetails(food.id)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
