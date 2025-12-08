@@ -59,7 +59,7 @@ const Header = () => {
           >
             <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = '/'; window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
               <img 
-                src="1000001594[1].png" 
+                src="/1000001594[1].png" 
                 alt="Bell Brand Appalam Logo" 
                 className={styles.logoImage}
               />
