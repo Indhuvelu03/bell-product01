@@ -29,19 +29,19 @@ const initialFoodItems = [
   {
     id: 3,
     category: "Spices",
-    name: "Asafetida (Kayam)",
+    name: "Asafoetida (Kayam)",
     description: "Strong and aromatic Compounded Asafoetida for authentic cooking.",
     image: "https://i.pinimg.com/1200x/2e/6f/a3/2e6fa3e171a07fe215986de34bbe2611.jpg",
     liked: false
   },
-  {
-    id: 4,
-    category: "Rava",
-    name: "Samba Rava",
-    description: "Premium quality Samba Wheat Rava for healthy breakfast options.",
-    image: "https://i.pinimg.com/1200x/c7/0f/3a/c70f3a8b2c5eb72934b0d119e2f36115.jpg",
-    liked: false
-  },
+  // {
+  //   id: 4,
+  //   category: "Rava",
+  //   name: "Samba Rava",
+  //   description: "Premium quality Samba Wheat Rava for healthy breakfast options.",
+  //   image: "https://i.pinimg.com/1200x/c7/0f/3a/c70f3a8b2c5eb72934b0d119e2f36115.jpg",
+  //   liked: false
+  // },
   {
     id: 5,
     category: "Pappad",

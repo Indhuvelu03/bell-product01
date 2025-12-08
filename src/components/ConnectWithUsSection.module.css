@@ -39,6 +39,12 @@
   z-index: 1;
 }
 
+/* Header Section */
+.headerSection {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 /* Text Content */
 .textContent {
   color: #f7e135;
@@ -75,9 +81,18 @@
 
 /* Form Wrapper */
 .formWrapper {
-  background: #fff;
-  padding: 40px;
+  background: transparent;
+  padding: 0;
   border: none;
+}
+
+/* Map Wrapper */
+.mapWrapper {
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .formContainer {
@@ -145,10 +160,12 @@
 /* Quick Contact */
 .quickContact {
   display: flex;
+  justify-content: center;
   gap: 30px;
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
 .contactItem {
@@ -170,14 +187,14 @@
 }
 
 .whatsappTitle {
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   font-weight: 600;
   color: #76a20e;
   margin: 0 0 12px 0;
 }
 
 .whatsappDescription {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: black;
   margin: 0 0 24px 0;
   line-height: 1.6;

@@ -35,7 +35,7 @@ const ShuffleHero = () => {
     <section className={styles.heroSection}>
         <div className={styles.heroTextContent}>
           <h1 className="heading-font">
-            Experience Authentic <span className="text-highlight">South Indian Flavors</span> With Bell Brand Traditional Foods
+            Experience Authentic <span className="text-highlight">South Indian Flavors</span> With Bell Traditional Products
           </h1>
           <p>
             Discover the rich taste of authentic South Indian cuisine with our premium range of 
@@ -99,23 +99,22 @@ const shuffle = (array) => {
 };
 
 const squareData = [
-  { id: 1, src: "https://i.pinimg.com/1200x/7f/75/6b/7f756b24abb992d779d0f7f89d43c9fe.jpg" },
-  { id: 2, src: "https://i.pinimg.com/736x/4c/a9/81/4ca981f8fd9314a3857b8c3d94007b0e.jpg" },
-  { id: 3, src: "https://i.pinimg.com/1200x/cd/0e/d6/cd0ed6938f3dc2cd11ca2a7f63e9eb67.jpg" },
-  { id: 4, src: "https://i.pinimg.com/1200x/13/dc/95/13dc9580ebff657ab874ae7d37d80b54.jpg" },
-  { id: 5, src: "https://5.imimg.com/data5/SELLER/Default/2024/9/451437705/RL/EQ/WC/130639282/samba-wheat-rava-1000x1000.jpg" },
-  { id: 6, src: "https://i.pinimg.com/1200x/45/a8/b5/45a8b5aa9108cb1db4466a8e2899a983.jpg" },
-  { id: 7, src: "https://i.pinimg.com/736x/09/a5/3d/09a53d5e8cd471d7bed296d09f884708.jpg" },
-  { id: 8, src: "https://i.pinimg.com/1200x/dd/65/1e/dd651ec70c9cb2afdd8de27603061ecd.jpg" },
-  { id: 9, src: "https://i.pinimg.com/736x/5f/72/51/5f7251937308408c6d44a88942df3d57.jpg" },
-  { id: 10, src: "https://i.pinimg.com/736x/3e/64/4d/3e644d0701a187e2756391dafbc739d5.jpg" },
-  { id: 11, src: "https://i.pinimg.com/736x/b9/ff/c3/b9ffc35725bb0a41031a825c1c4d76d4.jpg" },
-  { id: 12, src: "https://i.pinimg.com/736x/71/56/c8/7156c8bc4f413b69f2b43ff6976e36f1.jpg" },
-  { id: 13, src: "https://i.pinimg.com/1200x/af/16/0c/af160cfd9802b3498007662f9fcb5560.jpg" },
-  { id: 14, src: "https://i.pinimg.com/736x/b2/9b/03/b29b03746f2c4c8a312a007f632eacaa.jpg" },
-  { id: 15, src: "https://i.pinimg.com/1200x/de/61/d6/de61d6c893bffa8c509a162db3017e44.jpg" },
-  { id: 16, src: "https://i.pinimg.com/1200x/5b/b7/f8/5bb7f83ea04482e62c587ce660a40252.jpg" },
-
+  { id: 1, src: "https://i.pinimg.com/1200x/7f/75/6b/7f756b24abb992d779d0f7f89d43c9fe.jpg", alt: "appalam" },
+  { id: 2, src: "https://i.pinimg.com/736x/4c/a9/81/4ca981f8fd9314a3857b8c3d94007b0e.jpg", alt: "chips"},
+  { id: 3, src: "https://i.pinimg.com/1200x/cd/0e/d6/cd0ed6938f3dc2cd11ca2a7f63e9eb67.jpg", alt: "rava laddu" },
+  { id: 4, src: "https://i.pinimg.com/1200x/13/dc/95/13dc9580ebff657ab874ae7d37d80b54.jpg", alt: "asafoetita" },
+  { id: 5, src: "https://5.imimg.com/data5/SELLER/Default/2024/9/451437705/RL/EQ/WC/130639282/samba-wheat-rava-1000x1000.jpg", alt: "samba wheat rava"  },
+  { id: 6, src: "https://i.pinimg.com/1200x/45/a8/b5/45a8b5aa9108cb1db4466a8e2899a983.jpg", alt: "ball papad" },
+  { id: 7, src: "https://i.pinimg.com/736x/09/a5/3d/09a53d5e8cd471d7bed296d09f884708.jpg" , alt: "tomato chips"},
+  { id: 8, src: "https://i.pinimg.com/1200x/dd/65/1e/dd651ec70c9cb2afdd8de27603061ecd.jpg", alt: "rava upma"},
+  { id: 9, src: "https://i.pinimg.com/736x/5f/72/51/5f7251937308408c6d44a88942df3d57.jpg" , alt: "banana chips"},
+  { id: 10, src: "https://i.pinimg.com/736x/3e/64/4d/3e644d0701a187e2756391dafbc739d5.jpg", alt: "wheat puttu" },
+  { id: 11, src: "https://i.pinimg.com/736x/b9/ff/c3/b9ffc35725bb0a41031a825c1c4d76d4.jpg", alt: "triangle chips"},
+  { id: 12, src: "/papad2.jpeg", alt: "papad2"},
+  { id: 13, src: "https://i.pinimg.com/1200x/af/16/0c/af160cfd9802b3498007662f9fcb560.jpg", alt:"papad stack" },
+  { id: 14, src: "https://i.pinimg.com/736x/b2/9b/03/b29b03746f2c4c8a312a007f632eacaa.jpg", alt: "tapioca chips"},
+  { id: 15, src: "/papad1.jpeg" , alt: "Bell Brand Papad"},
+  { id: 16, src: "https://i.pinimg.com/1200x/5b/b7/f8/5bb7f83ea04482e62c587ce660a40252.jpg" , alt: "upma with rava"},
 ];
 
 const generateSquares = () => {

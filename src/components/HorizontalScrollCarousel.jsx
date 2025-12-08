@@ -283,7 +283,7 @@ const products = [
     id: 2,
     name: "Bell Papad",
     description:
-      "Traditional crunch of Bell Vadam. Sun-dried and seasoned to perfection.",
+      "Traditional crunch of Bell Papad. Sun-dried and seasoned to perfection.",
     image: "https://i.pinimg.com/1200x/4d/0b/e8/4d0be802a226fe0526d1bf708e08aefb.jpg",
     features: [
       "Sun-Dried Naturally",
@@ -296,7 +296,7 @@ const products = [
     id: 3,
     name: "Masala Chips",
     description:
-      "Crispy and flavorful Bell Chips, perfect snack for any time of the day.",
+      "Crispy and flavorful Masala Chips, perfect snack for any time of the day.",
     image: "https://i.pinimg.com/736x/e3/57/4a/e3574aba8c36e00df7c13171e69e3af4.jpg",
     features: [
       "Crunchy Texture",
@@ -309,7 +309,7 @@ const products = [
     id: 4,
     name: "Whole Wheat Rava",
     description:
-      "Finely milled Bell Rava, essential for delicious upma and dosa.",
+      "Finely milled Whole Wheat Rava, essential for delicious upma and dosa.",
     image: "https://i.pinimg.com/736x/2c/92/52/2c9252ea7b3bf1bda000e833290f9533.jpg",
     features: [
       "Premium Quality Wheat",

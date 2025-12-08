@@ -46,7 +46,7 @@ const foodItems = [
   {
     id: 3,
     category: "Spices",
-    name: "Asafetida (Kayam)",
+    name: "Asafoetida (Kayam)",
     description: "Strong and aromatic Compounded Asafoetida for authentic cooking.",
     fullDescription: "Our Kayam (Asafoetida) is compounded with high-quality wheat flour and edible gum to provide a strong, lasting aroma. Essential for Sambhar, Rasam, and other traditional Indian dishes.",
     image: "https://i.pinimg.com/1200x/eb/c5/e6/ebc5e6018493d10f80c8add506bc677b.jpg",

@@ -28,30 +28,26 @@ const ConnectWithUsSection = () => {
       variants={sectionVariants}
     >
       <div className="container">
+        {/* Section Header */}
+        <motion.div 
+          className={styles.headerSection}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className={styles.subtitle}>Stay Connected</span>
+          <h2 className={styles.sectionTitle}>Connect with us</h2>
+        </motion.div>
+
         <div className={styles.contentWrapper}>
-          {/* Left Side - Text Content */}
+          {/* Left Side - WhatsApp Connect */}
           <motion.div 
-            className={styles.textContent}
+            className={styles.formWrapper}
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <span className={styles.subtitle}>Stay Connected</span>
-            <h2 className={styles.sectionTitle}>Connect with us</h2>
-            <p className={styles.description}>
-              We'd love to hear from you! Whether you're looking to place an order, become a 
-              distributor, or simply learn more about our products, our team is here to help.
-            </p>
-          </motion.div>
-
-          {/* Right Side - WhatsApp Connect */}
-          <motion.div 
-            className={styles.formWrapper}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <div className={styles.whatsappContainer}>
               <h3 className={styles.whatsappTitle}>Chat with us on WhatsApp</h3>
@@ -79,16 +75,37 @@ const ConnectWithUsSection = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
-                <span>+91 98409 56836</span>
+                <span>  +91 98409 56836</span>
               </div>
               <div className={styles.contactItem}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="16" x="2" y="4" rx="2"/>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                 </svg>
-                <span>bellappalam@gmail.com</span>
+                <span> bellappalam@gmail.com</span>
               </div>
+              
             </div>
+          </motion.div>
+
+          {/* Right Side - Google Map */}
+          <motion.div 
+            className={styles.mapWrapper}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7654321098765!2d80.27123456789012!3d13.08456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267890abcdef0%3A0x1234567890abcdef!2sBell%20Brand!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0, borderRadius: '12px' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Bell Brand Location"
+            ></iframe>
           </motion.div>
         </div>
       </div>
