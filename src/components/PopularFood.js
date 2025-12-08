@@ -6,72 +6,56 @@ import { useRouter } from 'next/navigation';
 import styles from './PopularFood.module.css';
 
 // --- Data ---
-const categories = ["All", "Pappad", "Rava", "Asafotida", "Wheat", "Chips"];
+const categories = ["All", "Appalam", "Pappad", "Chips", "Spices", "Rava"];
 
-// Initial list of food items with better images
+// Food items data matching product page
 const initialFoodItems = [
   {
     id: 1,
-    category: "Pappad",
-    name: "Appalam - Pappad",
-    description: "South Indian Appalams, crafted for premium taste and crisp texture.",
-    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Appalam",
+    name: "Appalam",
+    description: "Export quality traditional Appalam available in multiple sizes.",
+    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   },
   {
     id: 2,
-    category: "Rava",
-    name: "Whole Wheat Rava",
-    description: "Whole Wheat Rava delivers wholesome nutrition and authentic South Indian texture.",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Chips",
+    name: "Masala Chips",
+    description: "Spicy and crunchy Masala Chips enriched with pepper and cumin.",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   },
   {
     id: 3,
-    category: "Chips",
-    name: "Crispy Chips",
-    description: "Crispy Chips offer irresistible crunch and taste, made with premium ingredients.",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Spices",
+    name: "Asafetida (Kayam)",
+    description: "Strong and aromatic Compounded Asafoetida for authentic cooking.",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   },
   {
     id: 4,
-    category: "Pappad",
-    name: "Rice Appalam",
-    description: "Traditional rice appalams, light and airy, perfect with any meal.",
-    image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Rava",
+    name: "Samba Rava",
+    description: "Premium quality Samba Wheat Rava for healthy breakfast options.",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   },
   {
     id: 5,
-    category: "Rava",
-    name: "Fine Semolina Rava",
-    description: "Finely milled semolina for smooth puddings and delicate dishes.",
-    image: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Pappad",
+    name: "Pappad",
+    description: "Crispy and flavorful traditional Pappad made with premium ingredients.",
+    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   },
   {
     id: 6,
-    category: "Chips",
-    name: "Banana Chips",
-    description: "Sweet and savory banana chips, a healthy and crunchy snack.",
-    image: "https://images.unsplash.com/photo-1569074187119-c87815b476da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    liked: false
-  },
-  {
-    id: 7,
-    category: "Asafotida",
-    name: "Asafotida Powder",
-    description: "A strong, pungent spice widely used in Indian vegetarian cooking.",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    liked: false
-  },
-  {
-    id: 8,
-    category: "Wheat",
-    name: "Atta Wheat Flour",
-    description: "Premium whole wheat flour, ideal for making soft rotis and chapattis.",
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Rava",
+    name: "Whole Wheat Rava",
+    description: "Nutritious whole wheat rava for healthy and wholesome meals.",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     liked: false
   }
 ];
@@ -126,7 +110,9 @@ const PopularFood = () => {
     if (activeCategory === "All") {
       setDisplayedItems(allItems);
     } else {
-      setDisplayedItems(allItems.filter(item => item.category === activeCategory));
+      // For specific category, show only the first item of that category
+      const filteredItems = allItems.filter(item => item.category === activeCategory);
+      setDisplayedItems(filteredItems.slice(0, 1));
     }
   }, [activeCategory, allItems]);
 
@@ -141,6 +127,8 @@ const PopularFood = () => {
   const handleViewDetails = (productId) => {
     router.push(`/product/${productId}`);
   };
+
+  const isFullWidth = activeCategory !== "All";
 
   return (
     <motion.section 
@@ -193,7 +181,7 @@ const PopularFood = () => {
 
         {/* Food Cards Grid */}
         <motion.div 
-          className={styles.foodGrid}
+          className={`${styles.foodGrid} ${isFullWidth ? styles.foodGridSingle : ''}`}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -203,7 +191,7 @@ const PopularFood = () => {
             {displayedItems.map((food, index) => (
               <motion.div 
                 key={food.id} 
-                className={styles.foodCard}
+                className={`${styles.foodCard} ${isFullWidth ? styles.foodCardFull : ''}`}
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
@@ -250,7 +238,7 @@ const PopularFood = () => {
                   <p className={styles.foodDescription}>{food.description}</p>
                   <motion.button 
                     className={styles.viewButton}
-                    // onClick={() => handleViewDetails(food.id)}
+                    onClick={() => handleViewDetails(food.id)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

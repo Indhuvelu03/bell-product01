@@ -183,7 +183,7 @@
   border: 2px solid transparent;
   outline: none;
   transition: all 0.3s ease;
-  font-family: inherit;
+  /* font-family: inherit; */
 }
 
 .inputGroup input::placeholder,
