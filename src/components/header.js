@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 
 const navLinks = [
   { name: 'About Us', href: '#about-us' },
-  { name: 'Gallery', href: '#product-gallery' },
+  { name: 'Gallery', href: '#horizontal-scroll-carousel' },
   { name: 'Products', href: '#popular-food' },
   { name: 'Contact', href: '#connect-with-us' },
 ];
@@ -29,15 +29,10 @@ const Header = () => {
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
-    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
-      // Update URL without triggering instant jump
-      history.replaceState(null, '', `#${sectionId}`);
-    }else{
-      window.location.href =  `/#${sectionId}`;
     }
   };
 
@@ -57,7 +52,7 @@ const Header = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = '/'; window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
               <img 
                 src="1000001594[1].png" 
                 alt="Bell Brand Appalam Logo" 

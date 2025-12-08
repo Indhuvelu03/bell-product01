@@ -1,1246 +1,588 @@
-'use client';
+"use client";
 import React, { useState } from 'react';
-import { useParams } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useParams, useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import styles from './ProductDetails.module.css';
 
-// --- DATA FROM IMAGES & TEXT ---
 const foodItems = [
   {
     id: 1,
-    category: "Appalam",
-    name: "Appalam",
-    description: "Export quality traditional Appalam available in multiple sizes.",
-    fullDescription: "Our export-quality Bell Brand Appalam is crafted using a blend of Urid and Rice flour. It delivers the authentic crunch and taste of South India. Perfectly seasoned and prepared under strict hygiene standards.",
+    category: "Pappad",
+    name: "Appalam - Pappad",
+    description: "South Indian Appalams, crafted for premium taste and crisp texture.",
+    fullDescription: "Our premium Appalam is made using traditional methods passed down through generations. Each piece is carefully crafted to ensure the perfect crispiness and authentic South Indian taste. We use only the finest ingredients sourced from local farmers, ensuring freshness and quality in every bite.",
     image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹160",
-    originalPrice: "₹200",
-    weight: "30g, 60g, 100g, 160g, 200g, 250g, 300g, 500g",
-    ingredients: ["Urid Flour", "Rice Flour", "Salt", "Vegetable Oil", "Calcium Carbonate"],
-    nutritionalInfo: { calories: "343.81 Kcal", protein: "18.66g", carbs: "58.11g", fat: "0.36g", fiber: "2g" },
-    benefits: ["Export Quality", "High Protein", "Calcium Enriched", "Traditional Taste"],
-    features: ["FSSAI Certified", "No Artificial Colors", "Hygienically Packed", "Vegetarian"],
+    gallery: [
+      "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹149",
+    originalPrice: "₹199",
+    weight: "200g",
+    ingredients: ["Rice flour", "Salt", "Water", "Vegetable oil", "Cumin seeds"],
+    nutritionalInfo: {
+      calories: "350 kcal",
+      protein: "8g",
+      carbs: "70g",
+      fat: "5g",
+      fiber: "3g"
+    },
+    benefits: ["Gluten-free", "High in protein", "Traditional recipe", "Crispy texture"],
+    features: ["No preservatives", "Hand-made", "100% Vegetarian", "FSSAI Certified"],
     rating: 4.8,
-    reviews: 320,
+    reviews: 245,
     inStock: true,
-    sku: "BELL-APP-EXP"
+    sku: "BELL-APP-001"
   },
   {
     id: 2,
-    category: "Chips",
-    name: "Masala Chips",
-    description: "Spicy and crunchy Masala Chips enriched with pepper and cumin.",
-    fullDescription: "These Masala Chips are a spicy delight, made with a base of Urid flour and seasoned with black pepper, cumin, and asafoetida. A perfect tea-time snack that brings a burst of flavor in every bite.",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹80",
-    originalPrice: "₹100",
-    weight: "80g, 210g, 1kg",
-    ingredients: ["Urid flour", "Pepper", "Salt", "Sodium Bicarbonate", "Asafoetida", "Cumin", "Vegetable Oil"],
-    nutritionalInfo: { calories: "360 kcal", protein: "14g", carbs: "62g", fat: "4g", fiber: "3g" },
-    benefits: ["Rich in Spices", "Digestive Aids", "Crispy Texture", "Perfect Snack"],
-    features: ["Spicy Flavor", "Premium Ingredients", "Vegetarian", "Ready to Fry"],
-    rating: 4.7,
-    reviews: 145,
+    category: "Rava",
+    name: "Whole Wheat Rava",
+    description: "Whole Wheat Rava delivers wholesome nutrition and authentic South Indian texture.",
+    fullDescription: "Stone-ground to perfection, our Whole Wheat Rava retains all the natural nutrients and fiber of whole wheat grains. Perfect for making upma, kesari, and other traditional dishes.",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹99",
+    originalPrice: "₹129",
+    weight: "500g",
+    ingredients: ["100% Whole Wheat"],
+    nutritionalInfo: {
+      calories: "360 kcal",
+      protein: "12g",
+      carbs: "72g",
+      fat: "2g",
+      fiber: "10g"
+    },
+    benefits: ["100% Natural", "Rich in fiber", "Stone-ground", "No additives"],
+    features: ["No preservatives", "Stone-ground", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.6,
+    reviews: 189,
     inStock: true,
-    sku: "BELL-MSL-CHP"
+    sku: "BELL-RAV-002"
   },
   {
     id: 3,
-    category: "Spices",
-    name: "Asafetida (Kayam)",
-    description: "Strong and aromatic Compounded Asafoetida for authentic cooking.",
-    fullDescription: "Our Kayam (Asafoetida) is compounded with high-quality wheat flour and edible gum to provide a strong, lasting aroma. Essential for Sambhar, Rasam, and other traditional Indian dishes.",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹55",
-    originalPrice: "₹70",
-    weight: "25g, 50g, 100g",
-    ingredients: ["Wheat flour", "Edible Arabic Gum", "Asafoetida", "Wheat flour used 65% Approx"],
-    nutritionalInfo: { calories: "297 kcal", protein: "4g", carbs: "68g", fat: "1g", fiber: "4g" },
-    benefits: ["Strong Aroma", "Digestive Aid", "Enhances Flavor", "Traditional Recipe"],
-    features: ["Compounded", "Vegetarian", "Use sparingly", "Long Shelf Life"],
-    rating: 4.9,
-    reviews: 210,
+    category: "Chips",
+    name: "Crispy Chips",
+    description: "Crispy Chips offer irresistible crunch and taste, made with premium ingredients.",
+    fullDescription: "Perfectly seasoned and fried to golden perfection, our chips are the ideal snack for any occasion. Made with fresh potatoes and authentic spices.",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹79",
+    originalPrice: "₹99",
+    weight: "150g",
+    ingredients: ["Potatoes", "Vegetable oil", "Salt", "Spices", "Turmeric"],
+    nutritionalInfo: {
+      calories: "520 kcal",
+      protein: "6g",
+      carbs: "52g",
+      fat: "32g",
+      fiber: "4g"
+    },
+    benefits: ["Extra crispy", "Bold flavors", "Fresh ingredients", "Perfect crunch"],
+    features: ["Fresh potatoes", "Traditional recipe", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.7,
+    reviews: 312,
     inStock: true,
-    sku: "BELL-ASF-KYM"
+    sku: "BELL-CHP-003"
   },
   {
     id: 4,
-    category: "Rava",
-    name: "Samba Rava",
-    description: "Premium quality Samba Wheat Rava for healthy breakfast options.",
-    fullDescription: "High-quality broken wheat (Samba Rava) perfect for making Upma, Porridge, and Kesari. Packed with fiber and nutrients, it is a healthy alternative to refined grains.",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹65",
-    originalPrice: "₹85",
-    weight: "500g",
-    ingredients: ["100% Samba Wheat Granules"],
-    nutritionalInfo: { calories: "340 kcal", protein: "12g", carbs: "71g", fat: "1.5g", fiber: "10g" },
-    benefits: ["High Fiber", "Low Glycemic Index", "Rich in Nutrients", "Diet Friendly"],
-    features: ["Double Roasted", "Cleaned", "No Preservatives", "Vegetarian"],
-    rating: 4.6,
-    reviews: 98,
+    category: "Pappad",
+    name: "Rice Appalam",
+    description: "Traditional rice appalams, light and airy, perfect with any meal.",
+    fullDescription: "Made from the finest rice flour, these appalams are light, crispy, and complement any South Indian meal perfectly.",
+    image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹129",
+    originalPrice: "₹159",
+    weight: "200g",
+    ingredients: ["Rice flour", "Salt", "Cumin", "Water", "Black pepper"],
+    nutritionalInfo: {
+      calories: "340 kcal",
+      protein: "7g",
+      carbs: "68g",
+      fat: "4g",
+      fiber: "2g"
+    },
+    benefits: ["Light & airy", "Authentic taste", "Easy to digest", "Traditional recipe"],
+    features: ["No preservatives", "Hand-made", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.5,
+    reviews: 156,
     inStock: true,
-    sku: "BELL-SMB-RVA"
+    sku: "BELL-RAP-004"
   },
   {
     id: 5,
-    category: "Pappad",
-    name: "Pappad",
-    description: "Crispy and flavorful traditional Pappad made with premium ingredients.",
-    fullDescription: "Our Bell Brand Pappad is crafted using traditional recipes passed down through generations. Made with carefully selected lentils and spices, these papads offer the perfect crunch and authentic taste. Ideal as a side dish or snack, they fry up golden and crispy every time.",
-    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹120",
-    originalPrice: "₹150",
-    weight: "100g, 200g, 500g",
-    ingredients: ["Urid Dal", "Black Pepper", "Cumin", "Salt", "Asafoetida", "Vegetable Oil"],
-    nutritionalInfo: { calories: "350 kcal", protein: "20g", carbs: "55g", fat: "2g", fiber: "3g" },
-    benefits: ["High Protein", "Crispy Texture", "Traditional Recipe", "Versatile Snack"],
-    features: ["FSSAI Certified", "No Preservatives", "Ready to Fry", "Vegetarian"],
-    rating: 4.7,
-    reviews: 185,
+    category: "Rava",
+    name: "Fine Semolina Rava",
+    description: "Finely milled semolina for smooth puddings and delicate dishes.",
+    fullDescription: "Our fine semolina is perfect for making smooth upma, crispy dosas, and delicious desserts.",
+    image: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹89",
+    originalPrice: "₹119",
+    weight: "500g",
+    ingredients: ["100% Durum Wheat Semolina"],
+    nutritionalInfo: {
+      calories: "370 kcal",
+      protein: "13g",
+      carbs: "74g",
+      fat: "1g",
+      fiber: "4g"
+    },
+    benefits: ["Finely milled", "Versatile use", "Premium quality", "Rich in protein"],
+    features: ["Premium wheat", "Finely ground", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.4,
+    reviews: 98,
     inStock: true,
-    sku: "BELL-PPD-TRD"
+    sku: "BELL-FSR-005"
   },
   {
     id: 6,
-    category: "Rava",
-    name: "Whole Wheat Rava",
-    description: "Nutritious whole wheat rava for healthy and wholesome meals.",
-    fullDescription: "Our Whole Wheat Rava is made from 100% whole wheat grains, retaining all the natural fiber and nutrients. Perfect for making nutritious upma, kheer, halwa, and other traditional dishes. A healthier alternative that doesn't compromise on taste or texture.",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    price: "₹75",
-    originalPrice: "₹95",
-    weight: "500g, 1kg",
-    ingredients: ["100% Whole Wheat Grains"],
-    nutritionalInfo: { calories: "330 kcal", protein: "11g", carbs: "68g", fat: "2g", fiber: "12g" },
-    benefits: ["100% Whole Grain", "High Fiber", "Rich in Nutrients", "Heart Healthy"],
-    features: ["Stone Ground", "No Additives", "No Preservatives", "Vegetarian"],
-    rating: 4.8,
-    reviews: 124,
+    category: "Chips",
+    name: "Banana Chips",
+    description: "Sweet and savory banana chips, a healthy and crunchy snack.",
+    fullDescription: "Made from fresh Kerala bananas, our chips are a perfect blend of sweet and savory flavors.",
+    image: "https://images.unsplash.com/photo-1569074187119-c87815b476da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1569074187119-c87815b476da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹99",
+    originalPrice: "₹129",
+    weight: "200g",
+    ingredients: ["Banana", "Coconut oil", "Salt", "Turmeric powder"],
+    nutritionalInfo: {
+      calories: "480 kcal",
+      protein: "2g",
+      carbs: "58g",
+      fat: "28g",
+      fiber: "6g"
+    },
+    benefits: ["Natural sweetness", "Coconut oil fried", "Kerala special", "Energy boost"],
+    features: ["Kerala bananas", "Coconut oil", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.9,
+    reviews: 423,
     inStock: true,
-    sku: "BELL-WHL-RVA"
+    sku: "BELL-BNC-006"
+  },
+  {
+    id: 7,
+    category: "Asafotida",
+    name: "Asafotida Powder",
+    description: "A strong, pungent spice widely used in Indian vegetarian cooking.",
+    fullDescription: "Premium quality asafoetida that adds a unique umami flavor to your dishes. Essential for authentic Indian cooking.",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹199",
+    originalPrice: "₹249",
+    weight: "50g",
+    ingredients: ["Pure Asafoetida resin", "Rice flour"],
+    nutritionalInfo: {
+      calories: "297 kcal",
+      protein: "4g",
+      carbs: "68g",
+      fat: "1g",
+      fiber: "4g"
+    },
+    benefits: ["Pure & potent", "Digestive aid", "Authentic flavor", "Premium grade"],
+    features: ["Pure resin", "Strong aroma", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.7,
+    reviews: 178,
+    inStock: true,
+    sku: "BELL-ASF-007"
+  },
+  {
+    id: 8,
+    category: "Wheat",
+    name: "Atta Wheat Flour",
+    description: "Premium whole wheat flour, ideal for making soft rotis and chapattis.",
+    fullDescription: "Our chakki-ground atta ensures you get the softest rotis and healthiest chapattis every time.",
+    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    price: "₹249",
+    originalPrice: "₹299",
+    weight: "1kg",
+    ingredients: ["100% Whole Wheat"],
+    nutritionalInfo: {
+      calories: "340 kcal",
+      protein: "13g",
+      carbs: "71g",
+      fat: "2g",
+      fiber: "12g"
+    },
+    benefits: ["Chakki ground", "Soft rotis", "100% natural", "High in fiber"],
+    features: ["Chakki ground", "Premium wheat", "100% Vegetarian", "FSSAI Certified"],
+    rating: 4.8,
+    reviews: 567,
+    inStock: true,
+    sku: "BELL-ATT-008"
   }
 ];
 
-// --- STYLES OBJECT ---
-const theme = {
-  colors: {
-    primary: '#3f4195',    // Deep Forest Green
-    secondary: '#cbdb3a',  // Gold/Bronze
-    bg: '#fcfbf9',         // Warm Off-white
-    text: '#2c3e50',       // Dark Blue-Grey
-    textLight: '#7f8c8d',  // Muted Grey
-    white: '#ffffff',
-    lightGrey: '#f5f6fa',
-    border: '#e1e4e8',
-    whatsapp: '#69ea76'
-  },
-  fonts: {
-    heading: '"Playfair Display", serif',
-    body: '"Inter", sans-serif',
-  },
-  shadows: {
-    soft: '0 10px 30px rgba(0,0,0,0.05)',
-    hover: '0 15px 35px rgba(26, 71, 42, 0.15)',
-    card: '0 4px 15px rgba(0,0,0,0.03)'
-  }
-};
-
-const styles = {
-  // Global & Layout
-  wrapper: {
-    minHeight: '100vh',
-    background: theme.colors.bg,
-    color: theme.colors.text,
-    fontFamily: theme.fonts.body,
-    paddingBottom: '4rem',
-  },
-  navbar: {
-    padding: '1.2rem 1.5rem',
-    // background: theme.colors.white,
-    borderBottom: `1px solid ${theme.colors.border}`,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'sticky',
-    top: 0,
-    zIndex: 100,
-    boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
-  },
-  navLogo: {
-    fontFamily: theme.fonts.heading,
-    fontSize: '1.8rem',
-    fontWeight: '700',
-    color: theme.colors.primary,
-    cursor: 'pointer',
-    letterSpacing: '-0.5px'
-  },
-  container: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '2rem 1rem'
-  },
-  
-  // Detail View
-  breadcrumbBar: {
-    // background: theme.colors.white,
-    padding: '1rem 0',
-    marginBottom: '2rem',
-    borderBottom: `1px solid ${theme.colors.border}`,
-    backgroundColor: '#ffffff',
-    marginTop: '10px',
-    position: 'sticky',
-    top: '70px',
-    zIndex: 100
-  },
-  breadcrumbs: {
-    display: 'flex',
-    gap: '0.5rem',
-    fontSize: '0.85rem',
-    color: theme.colors.textLight,
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 1rem',
-    alignItems: 'center',
-    flexWrap: 'wrap'
-  },
-  breadcrumbLink: {
-    cursor: 'pointer',
-    transition: 'color 0.2s',
-    color: theme.colors.textLight,
-    textDecoration: 'none'
-  },
-  breadcrumbSeparator: {
-    color: theme.colors.border,
-    fontSize: '0.8rem'
-  },
-  breadcrumbActive: {
-    color: theme.colors.primary,
-    fontWeight: '600',
-    fontFamily: theme.fonts.heading,
-    fontSize: '1rem'
-  },
-  mainSection: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '4rem',
-    alignItems: 'start'
-  },
-  mainImageBox: {
-    background: theme.colors.white,
-    borderRadius: '16px',
-    overflow: 'hidden',
-    boxShadow: theme.shadows.soft,
-    position: 'relative'
-  },
-  mainImage: {
-    width: '100%',
-    height: '500px',
-    objectFit: 'cover',
-    display: 'block'
-  },
-  prodCategory: {
-    color: theme.colors.secondary,
-    fontSize: '0.9rem',
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: '1.5px',
-    marginBottom: '0.5rem',
-    display: 'block'
-  },
-  backBtn: {
-    padding: '10px 20px',
-    background: 'transparent',  
-    border: '1px solid #0000005b',
-    borderRadius: '60px',
-    cursor: 'pointer',
-    fontSize: '0.9rem',
-    color: theme.colors.textLight,
-    transition: 'all 0.3s ease',
-    marginBottom: '1rem'
-
-  },
-  prodTitle: {
-    fontFamily: theme.fonts.heading,
-    fontSize: '3rem',
-    color: theme.colors.primary,
-    fontWeight: '700',
-    margin: '0 0 1rem 0',
-    lineHeight: 1.1
-  },
-  ratingRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-    marginBottom: '2rem',
-    paddingBottom: '2rem',
-    borderBottom: `1px solid ${theme.colors.border}`
-  },
-  description: {
-    lineHeight: 1.8,
-    color: theme.colors.text,
-    fontSize: '1.05rem',
-    marginBottom: '2rem'
-  },
-  weightContainer: {
-    marginBottom: '2.5rem'
-  },
-  weightLabel: {
-    display: 'block',
-    fontSize: '0.75rem',
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: '1.5px',
-    color: theme.colors.textLight,
-    marginBottom: '0.8rem'
-  },
-  featuresGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1rem',
-    marginBottom: '2.5rem'
-  },
-  featureItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.8rem',
-    fontSize: '0.95rem',
-    color: theme.colors.text
-  },
-  checkIcon: {
-    color: theme.colors.secondary,
-    fontWeight: 'bold',
-    fontSize: '1.2rem'
-  },
-  actionsRow: {
-    display: 'flex',
-    gap: '1rem',
-    marginTop: '2rem'
-  },
-  btnPrimary: {
-    flex: 2,
-    padding: '1.2rem',
-    background: theme.colors.primary,
-    color: theme.colors.white,
-    border: 'none',
-    borderRadius: '8px',
-    fontSize: '1rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    boxShadow: '0 4px 15px rgba(26, 71, 42, 0.3)',
-    textTransform: 'uppercase',
-    letterSpacing: '1px'
-  },
-  btnSecondary: {
-    flex: 1,
-    padding: '1.2rem',
-    background: theme.colors.whatsapp,
-    color: theme.colors.white,
-    border: 'none',
-    // borderRadius: '8px',
-    fontSize: '1rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    // boxShadow: '0 4px 15px rgba(37, 211, 102, 0.3)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '0.5rem'
-  },
-
-  // Tabs
-  tabSection: {
-    marginTop: '5rem',
-    borderTop: `1px solid ${theme.colors.border}`,
-    paddingTop: '3rem'
-  },
-  tabHeaders: {
-    display: 'flex',
-    gap: '3rem',
-    marginBottom: '3rem',
-    justifyContent: 'center',
-    borderBottom: `1px solid ${theme.colors.border}`
-  },
-  tabBtn: {
-    padding: '0 0 1rem 0',
-    background: 'transparent',
-    border: 'none',
-    fontSize: '1.1rem',
-    fontWeight: '500',
-    color: theme.colors.textLight,
-    cursor: 'pointer',
-    position: 'relative',
-    fontFamily: theme.fonts.heading,
-    transition: 'all 0.3s'
-  },
-  tabBtnActive: {
-    color: theme.colors.primary,
-    fontWeight: '700'
-  },
-  activeLine: {
-    position: 'absolute',
-    bottom: -1,
-    left: 0,
-    right: 0,
-    height: '3px',
-    background: theme.colors.secondary,
-    borderRadius: '3px 3px 0 0'
-  },
-  tabContent: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    textAlign: 'center'
-  },
-  nutritionGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-    gap: '1.5rem'
-  },
-  nutritionCard: {
-    background: theme.colors.white,
-    padding: '1.5rem 1rem',
-    borderRadius: '12px',
-    border: `1px solid ${theme.colors.border}`,
-    transition: 'transform 0.3s',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '0.5rem'
-  },
-  nutritionLabel: {
-    fontSize: '0.85rem',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    color: theme.colors.textLight
-  },
-  nutritionValue: {
-    fontSize: '1.4rem',
-    fontWeight: '700',
-    color: theme.colors.primary,
-    fontFamily: theme.fonts.heading
-  },
-  // New table styles
-  nutritionTable: {
-    width: '100%',
-    maxWidth: '900px',
-    margin: '0 auto',
-    borderCollapse: 'separate',
-    borderSpacing: '0'
-  },
-  nutritionTableRow: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1rem',
-    flexWrap: 'wrap'
-  },
-  nutritionTableCell: {
-    background: theme.colors.white,
-    padding: '1.5rem 2rem',
-    borderRadius: '12px',
-    border: `1px solid ${theme.colors.border}`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '0.8rem',
-    minWidth: '140px',
-    flex: '1 1 140px',
-    maxWidth: '180px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
-  },
-  
-  // Replace the NutritionTable component with this new one
-  nutritionTableWrapper: {
-    width: '100%',
-    maxWidth: '600px',
-    margin: '0 auto',
-  },
-  
-  nutritionTable: {
-    width: '100%',
-    borderCollapse: 'separate',
-    borderSpacing: '0',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-  },
-  
-  nutritionTh: {
-    background: 'linear-gradient(135deg, #3f4195 0%, #5a5db8 100%)',
-    color: '#ffffff',
-    padding: '1.2rem 1.5rem',
-    textAlign: 'left',
-    fontWeight: '600',
-    fontSize: '0.95rem',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-  },
-  
-  nutritionThFirstChild: {
-    borderTopLeftRadius: '12px',
-  },
-  
-  nutritionThLastChild: {
-    borderTopRightRadius: '12px',
-    textAlign: 'right',
-  },
-  
-  nutritionTr: {
-    transition: 'all 0.3s ease',
-    cursor: 'default',
-  },
-  
-  nutritionTrEven: {
-    backgroundColor: '#ffffff',
-  },
-  
-  nutritionTrOdd: {
-    backgroundColor: '#f8f9fc',
-  },
-  
-  nutritionTrLastChildTdFirstChild: {
-    borderBottomLeftRadius: '12px',
-  },
-  
-  nutritionTrLastChildTdLastChild: {
-    borderBottomRightRadius: '12px',
-  },
-  
-  nutritionTd: {
-    padding: '1rem 1.5rem',
-    borderBottom: '1px solid #e8eaef',
-  },
-  
-  nutritionTrLastChildTd: {
-    borderBottom: 'none',
-  },
-  
-  nutritionTdLabelCell: {
-    fontWeight: '500',
-    color: '#2c3e50',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.8rem',
-  },
-  
-  nutrientIcon: {
-    fontSize: '1.2rem',
-  },
-  
-  nutritionTdValueCell: {
-    textAlign: 'right',
-    fontWeight: '700',
-    color: '#3f4195',
-    fontFamily: theme.fonts.heading,
-    fontSize: '1.1rem',
-  },
-  
-  // Mobile Card View - Hidden on Desktop
-  nutritionMobileCards: {
-    display: 'none',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1rem',
-  },
-  
-  nutritionMobileCard: {
-    background: '#ffffff',
-    borderRadius: '12px',
-    padding: '1.2rem',
-    textAlign: 'center',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-    border: '1px solid #e8eaef',
-  },
-  
-  mobileCardIcon: {
-    fontSize: '1.8rem',
-    marginBottom: '0.5rem',
-  },
-  
-  mobileCardLabel: {
-    fontSize: '0.75rem',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    color: '#7f8c8d',
-    marginBottom: '0.3rem',
-  },
-  
-  mobileCardValue: {
-    fontSize: '1.3rem',
-    fontWeight: '700',
-    color: '#3f4195',
-    fontFamily: theme.fonts.heading,
-  },
-};
-
-const StarRating = ({ rating }) => (
-  <div style={{ color: theme.colors.secondary, fontSize: '1.1rem', letterSpacing: '2px' }}>
-    {'★'.repeat(Math.floor(rating))}{'☆'.repeat(5 - Math.floor(rating))}
-  </div>
-);
-
-// Add this new component before the main export
-const NutritionTable = ({ nutritionalInfo }) => {
-  const nutritionData = Object.entries(nutritionalInfo);
-  
+const StarRating = ({ rating }) => {
   return (
-    <motion.div 
-      className="nutrition-table-wrapper"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <table className="nutrition-table">
-        <thead>
-          <motion.tr
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <th className="nutrition-th">Nutrient</th>
-            <th className="nutrition-th">Value (per 100g)</th>
-          </motion.tr>
-        </thead>
-        <tbody>
-          {nutritionData.map(([key, value], index) => (
-            <motion.tr
-              key={key}
-              className={`nutrition-tr ${index % 2 === 0 ? 'even' : 'odd'}`}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ 
-                duration: 0.4, 
-                delay: 0.1 + index * 0.08,
-                ease: "easeOut"
-              }}
-              whileHover={{ 
-                backgroundColor: '#f0f4ff',
-                scale: 1.01,
-                transition: { duration: 0.2 }
-              }}
-            >
-              <td className="nutrition-td label-cell">
-                <span className="nutrient-icon">
-                  {key === 'calories' }
-                  {key === 'protein' }
-                  {key === 'carbs' }
-                  {key === 'fat' }
-                  {key === 'fiber'}
-                </span>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </td>
-              <td className="nutrition-td value-cell">{value}</td>
-            </motion.tr>
-          ))}
-        </tbody>
-      </table>
-      
-      {/* Mobile Card View */}
-      <div className="nutrition-mobile-cards">
-        {nutritionData.map(([key, value], index) => (
-          <motion.div
-            key={key}
-            className="nutrition-mobile-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.4, 
-              delay: index * 0.1,
-              ease: "easeOut"
-            }}
-            whileHover={{ 
-              y: -3,
-              boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
-              transition: { duration: 0.2 }
-            }}
-          >
-            <div className="mobile-card-icon">
-              {key === 'calories' }
-              {key === 'protein' }
-              {key === 'carbs' }
-              {key === 'fat' }
-              {key === 'fiber' }
-            </div>
-            <div className="mobile-card-label">{key.charAt(0).toUpperCase() + key.slice(1)}</div>
-            <div className="mobile-card-value">{value}</div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
+    <div className={styles.starRating}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          className={star <= Math.floor(rating) ? styles.starFilled : styles.starEmpty}
+        >
+          ★
+        </span>
+      ))}
+    </div>
   );
 };
 
-// --- MAIN APP COMPONENT ---
 export default function ProductDetails() {
   const params = useParams();
-  const productId = parseInt(params.id);
-  
+  const router = useRouter();
+  const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState('description');
-  const [productName, setProductName] = useState('');
+  const [quantity, setQuantity] = useState(1);
 
-  const currentProduct = foodItems.find(p => p.id === productId);
-  const recommendedProducts = currentProduct ? foodItems.filter(item => item.id !== currentProduct.id).slice(0, 3) : [];
+  const product = foodItems.find(item => item.id === parseInt(params.id));
 
-  // Handle product not found
-  if (!currentProduct) {
+  const similarProducts = foodItems
+    .filter(item => item.category === product?.category && item.id !== product?.id)
+    .slice(0, 3);
+
+  if (!product) {
     return (
-      <div style={styles.wrapper}>
-        <style>
-          {`
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
-          `}
-        </style>
-        <nav style={styles.navbar}>
-          <div style={styles.navLogo} onClick={() => window.location.href = '/'}>BELL BRAND</div>
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: 600, color: theme.colors.text }}>Help: +91 98765 43210</span>
-          </div>
-        </nav>
-        <div style={styles.container}>
-          <div style={{ textAlign: 'center', padding: '4rem' }}>
-            <h1 style={{ fontFamily: theme.fonts.heading, fontSize: '2rem', color: theme.colors.primary }}>Product Not Found</h1>
-            <p style={{ color: theme.colors.textLight, marginTop: '1rem' }}>The product you're looking for doesn't exist.</p>
-            <button 
-              onClick={() => window.location.href = '/'}
-              style={{ ...styles.btnPrimary, marginTop: '2rem', display: 'inline-block' }}
-            >
-              Go to Home
-            </button>
-          </div>
+      <div className={styles.notFound}>
+        <div className={styles.notFoundContent}>
+          <span className={styles.notFoundIcon}>🔍</span>
+          <h2>Product Not Found</h2>
+          <p>The product you're looking for doesn't exist or has been removed.</p>
+          <button onClick={() => router.push('/')} className={styles.homeBtn}>
+            Back to Home
+          </button>
         </div>
       </div>
     );
   }
 
-  const whatsappNumber = "919840956836";
-  const whatsappMessage = `Hello! I'm interested in Bell Brand products, specifically ${productName}.`;
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  
-  const goToHome = () => {
-    window.location.href = '/';
-  };
-  
-  const goToProductsList = () => {
-    window.location.href = '/#popular-food';
-  };
-
-  const goToProduct = (id) => {
-    window.location.href = `/product/${id}`;
-  };
-
   return (
-    <div style={styles.wrapper}>
-      {/* Inject Fonts & Global Styles */}
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
-          
-          ::-webkit-scrollbar { width: 8px; }
-          ::-webkit-scrollbar-track { background: #f1f1f1; }
-          ::-webkit-scrollbar-thumb { background: #c1a57b; border-radius: 4px; }
-          ::-webkit-scrollbar-thumb:hover { background: #1a472a; }
-          
-          .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26, 71, 42, 0.4) !important; }
-          .btn-secondary:hover { transform: translateY(-2px); }
-          .card:hover { transform: translateY(-5px) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important; }
-          .back-btn:hover { background: #fff !important; border-color: #1a472a !important; color: #1a472a !important; }
-          .breadcrumb-link:hover { color: #1a472a !important; text-decoration: underline; }
-          
-          /* Nutrition Table Styles */
-          .nutrition-table-wrapper {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-          }
-          
-          .nutrition-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-          }
-          
-          .nutrition-th {
-            background: linear-gradient(135deg, #3f4195 0%, #5a5db8 100%);
-            color: #ffffff;
-            padding: 1.2rem 1.5rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-          }
-          
-          .nutrition-th:first-child {
-            border-top-left-radius: 12px;
-          }
-          
-          .nutrition-th:last-child {
-            border-top-right-radius: 12px;
-            text-align: right;
-          }
-          
-          .nutrition-tr {
-            transition: all 0.3s ease;
-            cursor: default;
-          }
-          
-          .nutrition-tr.even {
-            background-color: #ffffff;
-          }
-          
-          .nutrition-tr.odd {
-            background-color: #f8f9fc;
-          }
-          
-          .nutrition-tr:last-child td:first-child {
-            border-bottom-left-radius: 12px;
-          }
-          
-          .nutrition-tr:last-child td:last-child {
-            border-bottom-right-radius: 12px;
-          }
-          
-          .nutrition-td {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #e8eaef;
-          }
-          
-          .nutrition-tr:last-child .nutrition-td {
-            border-bottom: none;
-          }
-          
-          .nutrition-td.label-cell {
-            font-weight: 500;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-          }
-          
-          .nutrient-icon {
-            font-size: 1.2rem;
-          }
-          
-          .nutrition-td.value-cell {
-            text-align: right;
-            font-weight: 700;
-            color: #3f4195;
-            font-family: "Playfair Display", serif;
-            font-size: 1.1rem;
-          }
-          
-          /* Mobile Card View - Hidden on Desktop */
-          .nutrition-mobile-cards {
-            display: none;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-          }
-          
-          .nutrition-mobile-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 1.2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border: 1px solid #e8eaef;
-          }
-          
-          .mobile-card-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-          }
-          
-          .mobile-card-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #7f8c8d;
-            margin-bottom: 0.3rem;
-          }
-          
-          .mobile-card-value {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #3f4195;
-            font-family: "Playfair Display", serif;
-          }
-          
-          /* Responsive Styles */
-          .main-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-          }
-          
-          .main-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-          }
-          
-          .prod-title {
-            font-family: "Playfair Display", serif;
-            font-size: 3rem;
-            color: #3f4195;
-            font-weight: 700;
-            margin: 0 0 1rem 0;
-            line-height: 1.1;
-          }
-          
-          .tab-headers {
-            display: flex;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            justify-content: center;
-            border-bottom: 1px solid #e1e4e8;
-          }
-          
-          .actions-row {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-          }
-          
-          .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-          }
-          
-          .container-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-          }
-          
-          /* Tablet Styles */
-          @media (max-width: 1024px) {
-            .main-section {
-              gap: 2.5rem;
-            }
-            
-            .prod-title {
-              font-size: 2.5rem;
-            }
-            
-            .main-image {
-              height: 400px;
-            }
-            
-            .container-main {
-              padding: 2rem 1.5rem;
-            }
-          }
-          
-          /* Mobile Styles */
-          @media (max-width: 768px) {
-            .breadcrumb-bar {
-              top: 60px !important;
-            }
-            
-            .main-section {
-              grid-template-columns: 1fr;
-              gap: 2rem;
-            }
-            
-            .main-image {
-              height: 300px;
-            }
-            
-            .prod-title {
-              font-size: 2rem;
-            }
-            
-            .tab-headers {
-              gap: 1rem;
-              flex-wrap: wrap;
-              padding: 0 0.5rem;
-            }
-            
-            .actions-row {
-              flex-direction: column;
-            }
-            
-            .actions-row button {
-              flex: none !important;
-              width: 100%;
-            }
-            
-            .features-grid {
-              grid-template-columns: 1fr;
-            }
-            
-            .container-main {
-              padding: 1.5rem 1rem;
-            }
-            
-            .benefits-wrapper {
-              gap: 0.5rem !important;
-            }
-            
-            .benefits-wrapper > div {
-              font-size: 0.75rem !important;
-              padding: 0.4rem 0.8rem !important;
-            }
-            
-            .weight-badges {
-              gap: 0.5rem !important;
-            }
-            
-            .weight-badges > span {
-              padding: 0.5rem 0.8rem !important;
-              font-size: 0.8rem !important;
-            }
-            
-            /* Hide table, show cards on mobile */
-            .nutrition-table {
-              display: none;
-            }
-            
-            .nutrition-mobile-cards {
-              display: grid;
-            }
-          }
-          
-          /* Small Mobile Styles */
-          @media (max-width: 480px) {
-            .breadcrumb-bar {
-              top: 50px !important;
-            }
-            
-            .main-image {
-              height: 250px;
-            }
-            
-            .prod-title {
-              font-size: 1.6rem;
-            }
-            
-            .tab-headers {
-              gap: 3rem;
-            }
-            
-            .tab-headers button {
-              font-size: 0.9rem !important;
-              padding: 0 0 0.8rem 0 !important;
-            }
-            
-            .nutrition-mobile-cards {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 0.8rem;
-            }
-            
-            .nutrition-mobile-card {
-              padding: 1rem 0.8rem;
-            }
-            
-            .mobile-card-icon {
-              font-size: 1.5rem;
-            }
-            
-            .mobile-card-label {
-              font-size: 0.65rem;
-            }
-            
-            .mobile-card-value {
-              font-size: 1.1rem;
-            }
-          }
-        `}
-      </style>
-
-      {/* Product Details View */}
-      <div className="breadcrumb-bar" style={styles.breadcrumbBar}>
-        <div style={styles.breadcrumbs}>
-          <span onClick={goToHome} className="breadcrumb-link" style={styles.breadcrumbLink}>Home</span>
-          <span style={styles.breadcrumbSeparator}>/</span>
-          <span onClick={goToProductsList} className="breadcrumb-link" style={styles.breadcrumbLink}>Products</span>
-          <span style={styles.breadcrumbSeparator}>/</span>
-          <span style={styles.breadcrumbActive}>{currentProduct.name}</span>
+    <div className={styles.wrapper}>
+      
+      {/* Breadcrumbs */}
+      <div className={styles.breadcrumbBar}>
+        <div className={styles.breadcrumbContainer}>
+          <nav className={styles.breadcrumbs}>
+            <span onClick={() => router.push('/')} className={styles.breadcrumbLink}>Home</span>
+            <span className={styles.breadcrumbSeparator}>›</span>
+            <span onClick={() => router.push('/#our-products')} className={styles.breadcrumbLink}>Products</span>
+            <span className={styles.breadcrumbSeparator}>›</span>
+            <span className={styles.breadcrumbLink}>{product.category}</span>
+            <span className={styles.breadcrumbSeparator}>›</span>
+            <span className={styles.breadcrumbCurrent}>{product.name}</span>
+          </nav>
         </div>
       </div>
 
-      <div className="container-main">
-        <button onClick={goToProductsList} className="back-btn" style={styles.backBtn}>
-          ← Back to Collection
-        </button>
-
-        <div className="main-section">
-          {/* Left Column */}
-          <div>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }}
-              style={styles.mainImageBox}
-            >
-              <img src={currentProduct.image} alt={currentProduct.name} className="main-image" />
-            </motion.div>
-            
-            {/* Benefits Badges */}
-            <div className="benefits-wrapper" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '2rem', justifyContent: 'center' }}>
-              {currentProduct.benefits.map((b, i) => (
-                <div key={i} style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '0.5rem', 
-                  fontSize: '0.85rem', 
-                  color: theme.colors.text,
-                  background: theme.colors.white,
-                  padding: '0.5rem 1rem',
-                  borderRadius: '50px',
-                  border: `1px solid ${theme.colors.border}`
-                }}>
-                  <span style={{ color: theme.colors.secondary }}>★</span> {b}
+      {/* Main Product Section */}
+      <div className={styles.mainSection}>
+        
+        {/* Left Column - Images */}
+        <div className={styles.leftCol}>
+          <motion.div 
+            className={styles.mainImageBox}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className={styles.discountBadge}>
+              {Math.round(((parseInt(product.originalPrice.replace('₹', '')) - parseInt(product.price.replace('₹', ''))) / parseInt(product.originalPrice.replace('₹', ''))) * 100)}% OFF
+            </div>
+            <img 
+              src={product.gallery ? product.gallery[selectedImage] : product.image} 
+              alt={product.name} 
+            />
+          </motion.div>
+          
+          {product.gallery && product.gallery.length > 1 && (
+            <div className={styles.thumbnailRow}>
+              {product.gallery.map((img, index) => (
+                <div
+                  key={index}
+                  className={`${styles.thumbnail} ${selectedImage === index ? styles.thumbnailActive : ''}`}
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <img src={img} alt={`${product.name} ${index + 1}`} />
                 </div>
               ))}
             </div>
-          </div>
+          )}
 
-          {/* Right Column */}
-          <div>
-            <span style={styles.prodCategory}>{currentProduct.category} Collection</span>
-            <h1 className="prod-title">{currentProduct.name}</h1>
-            
-            <div style={styles.ratingRow}>
-              <StarRating rating={currentProduct.rating} />
-              <span style={{ color: theme.colors.textLight, fontSize: '0.9rem' }}>
-                Based on {currentProduct.reviews} verified reviews
-              </span>
+          {/* Trust Badges */}
+          <div className={styles.trustBadges}>
+            <div className={styles.trustBadge}>
+              <span className={styles.trustIcon}>🛡️</span>
+              <span>Quality Assured</span>
             </div>
-
-            <p style={styles.description}>
-              {currentProduct.description}
-            </p>
-
-            {/* Packaging Section */}
-            <div style={styles.weightContainer}>
-              <span style={styles.weightLabel}>Available Packaging</span>
-              <div className="weight-badges" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                {currentProduct.weight.split(',').map((w, i) => (
-                  <span key={i} style={{
-                    padding: '0.6rem 1.2rem',
-                    borderRadius: '6px',
-                    border: `1px solid ${theme.colors.border}`,
-                    color: theme.colors.primary,
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    background: theme.colors.white,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                    display: 'inline-block'
-                  }}>
-                    {w.trim()}
-                  </span>
-                ))}
-              </div>
+            <div className={styles.trustBadge}>
+              <span className={styles.trustIcon}>🚚</span>
+              <span>Fast Delivery</span>
             </div>
-
-            <div className="features-grid">
-              {currentProduct.features.map((f, i) => (
-                <div key={i} style={styles.featureItem}>
-                  <span style={styles.checkIcon}>✓</span> {f}
-                </div>
-              ))}
-            </div>
-
-            <div className="actions-row">
-              {/* <button className="btn-primary" style={styles.btnPrimary}>
-                Enquire for Pricing
-              </button> */}
-              <a className="btn-secondary" href= {whatsappLink} style={styles.btnSecondary}>
-                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="#ffff" fillRule="bold" d="M8 7V6a4 4 0 1 1 8 0v1h3c.552 0 1 .449 1 1.007v12.001c0 1.1-.895 1.992-1.994 1.992H5.994A1.994 1.994 0 0 1 4 20.008v-12C4 7.45 4.445 7 5 7zm1.2 0h5.6V6a2.8 2.8 0 0 0-5.6 0zM8 8.2H5.2v11.808c0 .436.356.792.794.792h12.012a.794.794 0 0 0 .794-.792V8.2H16V11h-1.2V8.2H9.2V11H8z"></path></svg>
-                <span>Buy Now</span>
-              </a>
+            <div className={styles.trustBadge}>
+              <span className={styles.trustIcon}>✓</span>
+              <span>FSSAI Certified</span>
             </div>
           </div>
         </div>
 
-        {/* Tabs Section */}
-        <div style={styles.tabSection}>
-          <div className="tab-headers">
-            {['description', 'ingredients', 'nutrition'].map(tab => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                style={{
-                  ...styles.tabBtn,
-                  ...(activeTab === tab ? styles.tabBtnActive : {})
-                }}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                {activeTab === tab && (
-                  <motion.div 
-                    layoutId="activeLine" 
-                    style={styles.activeLine}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </button>
+        {/* Right Column - Details */}
+        <div className={styles.rightCol}>
+          
+          {/* Category & Stock */}
+          <div className={styles.topMeta}>
+            <span className={styles.categoryBadge}>{product.category}</span>
+            <span className={product.inStock ? styles.inStock : styles.outOfStock}>
+              {product.inStock ? '● In Stock' : '○ Out of Stock'}
+            </span>
+          </div>
+
+          {/* Title */}
+          <motion.h1 
+            className={styles.prodTitle}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            {product.name}
+          </motion.h1>
+
+          {/* Rating & Reviews */}
+          <div className={styles.ratingRow}>
+            <StarRating rating={product.rating} />
+            <span className={styles.ratingText}>{product.rating}</span>
+            <span className={styles.reviewCount}>({product.reviews} reviews)</span>
+            <span className={styles.skuText}>SKU: {product.sku}</span>
+          </div>
+
+          {/* Description */}
+          <p className={styles.prodDesc}>{product.description}</p>
+
+          {/* Price Section */}
+          <div className={styles.priceSection}>
+            <div className={styles.priceRow}>
+              <span className={styles.currentPrice}>{product.price}</span>
+              <span className={styles.originalPrice}>{product.originalPrice}</span>
+              <span className={styles.savingsTag}>
+                You save ₹{parseInt(product.originalPrice.replace('₹', '')) - parseInt(product.price.replace('₹', ''))}
+              </span>
+            </div>
+            <span className={styles.weightTag}>Net Weight: {product.weight}</span>
+          </div>
+
+          {/* Features Grid */}
+          <div className={styles.featuresGrid}>
+            {product.features.map((feature, i) => (
+              <div key={i} className={styles.featureItem}>
+                <span className={styles.featureCheck}>✓</span>
+                <span>{feature}</span>
+              </div>
             ))}
           </div>
 
-          <div style={styles.tabContent}>
-            <AnimatePresence mode='wait'>
-              {activeTab === 'description' && (
-                <motion.div 
-                  key="desc"
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <p style={{ lineHeight: 2, fontSize: '1.1rem', color: theme.colors.text, maxWidth: '700px', margin: '0 auto' }}>
-                    {currentProduct.fullDescription}
-                  </p>
-                </motion.div>
-              )}
-              
-              {activeTab === 'ingredients' && (
-                <motion.div 
-                  key="ing"
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-                    {currentProduct.ingredients.map((ing, i) => (
-                      <motion.div 
-                        key={i} 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        style={{ 
-                          padding: '1rem 2rem', 
-                          background: theme.colors.white, 
-                          borderRadius: '50px',
-                          border: `1px solid ${theme.colors.border}`,
-                          color: theme.colors.text,
-                          fontSize: '1rem'
-                        }}
-                      >
-                        {ing}
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
+          {/* Quantity & Actions */}
+          <div className={styles.actionsRow}>
+            <div className={styles.quantityBox}>
+              <button 
+                onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                className={styles.qtyBtn}
+              >
+                −
+              </button>
+              <span className={styles.qtyValue}>{quantity}</span>
+              <button 
+                onClick={() => setQuantity(q => q + 1)}
+                className={styles.qtyBtn}
+              >
+                +
+              </button>
+            </div>
+            <button className={styles.enquiryBtn}>
+              <span>📞</span> Enquire Now
+            </button>
+            <button className={styles.whatsappBtn}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+              </svg>
+              WhatsApp
+            </button>
+          </div>
 
-              {activeTab === 'nutrition' && (
-                <motion.div 
-                  key="nut"
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <p style={{ marginBottom: '2rem', color: theme.colors.textLight, fontStyle: 'italic' }}>
-                    Approximate values per 100g serving
-                  </p>
-                  <NutritionTable nutritionalInfo={currentProduct.nutritionalInfo} />
-                </motion.div>
-              )}
-            </AnimatePresence>
+          {/* Benefits */}
+          <div className={styles.benefitsSection}>
+            <h4>Key Benefits</h4>
+            <div className={styles.benefitTags}>
+              {product.benefits.map((benefit, i) => (
+                <span key={i} className={styles.benefitTag}>{benefit}</span>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Tabs Section */}
+      <div className={styles.tabsSection}>
+        <div className={styles.tabsContainer}>
+          <div className={styles.tabHeaders}>
+            <button 
+              className={`${styles.tabBtn} ${activeTab === 'description' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('description')}
+            >
+              Description
+            </button>
+            <button 
+              className={`${styles.tabBtn} ${activeTab === 'ingredients' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('ingredients')}
+            >
+              Ingredients
+            </button>
+            <button 
+              className={`${styles.tabBtn} ${activeTab === 'nutrition' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('nutrition')}
+            >
+              Nutrition Facts
+            </button>
+          </div>
+
+          <div className={styles.tabContent}>
+            {activeTab === 'description' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={styles.descriptionTab}
+              >
+                <p>{product.fullDescription}</p>
+                <div className={styles.highlightBox}>
+                  <h5>Why Choose Bell Brand?</h5>
+                  <ul>
+                    <li>Traditional recipes passed down through generations</li>
+                    <li>Premium quality ingredients sourced locally</li>
+                    <li>Strict hygiene and quality control standards</li>
+                    <li>FSSAI certified manufacturing facility</li>
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'ingredients' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={styles.ingredientsTab}
+              >
+                <div className={styles.ingredientsList}>
+                  {product.ingredients.map((ingredient, i) => (
+                    <div key={i} className={styles.ingredientItem}>
+                      <span className={styles.ingredientIcon}>🌿</span>
+                      <span>{ingredient}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.allergyNote}>
+                  <strong>Allergy Information:</strong> Please check the packaging for detailed allergen information. Manufactured in a facility that also processes nuts and dairy products.
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'nutrition' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={styles.nutritionTab}
+              >
+                <p className={styles.nutritionNote}>Approximate values per 100g serving</p>
+                <div className={styles.nutritionGrid}>
+                  <div className={styles.nutritionItem}>
+                    <span className={styles.nutritionLabel}>Calories</span>
+                    <span className={styles.nutritionValue}>{product.nutritionalInfo.calories}</span>
+                  </div>
+                  <div className={styles.nutritionItem}>
+                    <span className={styles.nutritionLabel}>Protein</span>
+                    <span className={styles.nutritionValue}>{product.nutritionalInfo.protein}</span>
+                  </div>
+                  <div className={styles.nutritionItem}>
+                    <span className={styles.nutritionLabel}>Carbohydrates</span>
+                    <span className={styles.nutritionValue}>{product.nutritionalInfo.carbs}</span>
+                  </div>
+                  <div className={styles.nutritionItem}>
+                    <span className={styles.nutritionLabel}>Fat</span>
+                    <span className={styles.nutritionValue}>{product.nutritionalInfo.fat}</span>
+                  </div>
+                  <div className={styles.nutritionItem}>
+                    <span className={styles.nutritionLabel}>Fiber</span>
+                    <span className={styles.nutritionValue}>{product.nutritionalInfo.fiber}</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Similar Products */}
+      {similarProducts.length > 0 && (
+        <div className={styles.similarSection}>
+          <div className={styles.similarHeader}>
+            <h2>You May Also Like</h2>
+            <p>More products from {product.category}</p>
+          </div>
+          <div className={styles.similarCards}>
+            {similarProducts.map((item) => (
+              <motion.div
+                key={item.id}
+                className={styles.simCard}
+                onClick={() => router.push(`/product/${item.id}`)}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={styles.simImageBox}>
+                  <img src={item.image} alt={item.name} />
+                  <div className={styles.simOverlay}>
+                    <span>View Details</span>
+                  </div>
+                </div>
+                <div className={styles.simInfo}>
+                  <span className={styles.simCategory}>{item.category}</span>
+                  <h4>{item.name}</h4>
+                  <div className={styles.simPriceRow}>
+                    <span className={styles.simPrice}>{item.price}</span>
+                    <span className={styles.simOriginal}>{item.originalPrice}</span>
+                  </div>
+                  <div className={styles.simRating}>
+                    <StarRating rating={item.rating} />
+                    <span>({item.reviews})</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Back to Top */}
+      <div className={styles.backToProducts}>
+        <button onClick={() => router.push('/#our-products')} className={styles.backBtn}>
+          ← Back to All Products
+        </button>
       </div>
     </div>
   );

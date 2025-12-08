@@ -54,7 +54,7 @@ const HorizontalScrollCarousel = () => {
 
   return (
     <section
-      id="product-gallery"
+      id="horizontal-scroll-carousel"
       ref={targetRef}
       style={{
         position: "relative",

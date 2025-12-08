@@ -99,7 +99,7 @@
   background: transparent;
   border: none;
   outline: none;
-  /* font-family: inherit; */
+  font-family: inherit;
 }
 
 .emailInput::placeholder {

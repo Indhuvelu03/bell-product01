@@ -271,87 +271,6 @@
   color: white;
 }
 
-/* Single card full-width layout for filtered categories */
-.foodGridSingle {
-  display: flex;
-  justify-content: center;
-}
-
-.foodCardFull {
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: row;
-}
-
-.foodCardFull .cardImageWrapper {
-  width: 50%;
-  min-height: 350px;
-}
-
-.foodCardFull .cardImage {
-  height: 100%;
-  object-fit: cover;
-}
-
-.foodCardFull .cardContent {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.foodCardFull .foodName {
-  font-size: 2rem;
-}
-
-.foodCardFull .foodDescription {
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.foodCardFull .viewButton {
-  align-self: flex-start;
-  padding: 1rem 2rem;
-}
-
-/* Mobile styles - revert to standard card layout */
-@media (max-width: 768px) {
-  .foodGridSingle {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .foodCardFull {
-    flex-direction: column;
-    max-width: 100%;
-  }
-
-  .foodCardFull .cardImageWrapper {
-    width: 100%;
-    min-height: 200px;
-  }
-
-  .foodCardFull .cardContent {
-    width: 100%;
-    padding: 1.5rem;
-  }
-
-  .foodCardFull .foodName {
-    font-size: 1.4rem;
-  }
-
-  .foodCardFull .foodDescription {
-    font-size: 1rem;
-  }
-
-  .foodCardFull .viewButton {
-    align-self: stretch;
-    padding: 0.8rem 1.5rem;
-  }
-}
-
 /* ================================================= */
 /* RESPONSIVENESS (Mobile View)                      */
 /* ================================================= */
@@ -405,10 +324,5 @@
   
   .foodGrid {
     grid-template-columns: 1fr;
-  }
-
-  .viewButton {
-    width: 100%;
-    justify-content: center;
   }
 }
