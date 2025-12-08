@@ -15,7 +15,7 @@ const initialFoodItems = [
     category: "Appalam",
     name: "Appalam",
     description: "Export quality traditional Appalam available in multiple sizes.",
-    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/a3/c7/58/a3c758c793568876adacd19fe3379fae.jpg",
     liked: false
   },
   {
@@ -23,7 +23,7 @@ const initialFoodItems = [
     category: "Chips",
     name: "Masala Chips",
     description: "Spicy and crunchy Masala Chips enriched with pepper and cumin.",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/94/f8/f1/94f8f1fa1f07536f20bbeba3c99b1c84.jpg",
     liked: false
   },
   {
@@ -31,7 +31,7 @@ const initialFoodItems = [
     category: "Spices",
     name: "Asafetida (Kayam)",
     description: "Strong and aromatic Compounded Asafoetida for authentic cooking.",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/2e/6f/a3/2e6fa3e171a07fe215986de34bbe2611.jpg",
     liked: false
   },
   {
@@ -39,7 +39,7 @@ const initialFoodItems = [
     category: "Rava",
     name: "Samba Rava",
     description: "Premium quality Samba Wheat Rava for healthy breakfast options.",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/c7/0f/3a/c70f3a8b2c5eb72934b0d119e2f36115.jpg",
     liked: false
   },
   {
@@ -47,7 +47,7 @@ const initialFoodItems = [
     category: "Pappad",
     name: "Pappad",
     description: "Crispy and flavorful traditional Pappad made with premium ingredients.",
-    image: "https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://media.assettype.com/kalkionline/2024-03/110f1bb6-c4a4-4f07-92e0-815698b9e03b/Vadaam_Image.jpg?w=1200&ar=40:21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100",
     liked: false
   },
   {
@@ -55,7 +55,7 @@ const initialFoodItems = [
     category: "Rava",
     name: "Whole Wheat Rava",
     description: "Nutritious whole wheat rava for healthy and wholesome meals.",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/a5/d3/e5/a5d3e53177794b10ebd2a321355133e2.jpg",
     liked: false
   }
 ];

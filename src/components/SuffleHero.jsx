@@ -99,21 +99,22 @@ const shuffle = (array) => {
 };
 
 const squareData = [
-  { id: 1, src: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" },
-  { id: 2, src: "https://images.unsplash.com/photo-1510925758641-869d353cecc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" },
-  { id: 3, src: "https://images.unsplash.com/photo-1629901925121-8a141c2a42f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" },
-  { id: 4, src: "https://images.unsplash.com/photo-1580238053495-b9720401fd45?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" },
-  { id: 5, src: "https://images.unsplash.com/photo-1569074187119-c87815b476da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1325&q=80" },
-  { id: 6, src: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" },{ id: 7, src: "https://images.unsplash.com/photo-1599586120429-48281b6f0ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" },
-  { id: 8, src: "https://plus.unsplash.com/premium_photo-1671436824833-91c0741e89c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" },
-  { id: 9, src: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" },
-  { id: 10, src: "https://images.unsplash.com/photo-1610768764270-790fbec18178?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" },
-  { id: 11, src: "https://images.unsplash.com/photo-1507034589631-9433cc6bc453?ixlib=rb-4.0.3&auto=format&fit=crop&w=684&q=80" },
-  { id: 12, src: "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&auto=format&fit=crop&w=882&q=80" },
-  { id: 13, src: "https://images.unsplash.com/photo-1560089000-7433a4ebbd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" },
-  { id: 14, src: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80" },
-  { id: 15, src: "https://images.unsplash.com/photo-1606244864456-8bee63fce472?ixlib=rb-4.0.3&auto=format&fit=crop&w=681&q=80" },
-  { id: 16, src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1820&q=80" },
+  { id: 1, src: "https://i.pinimg.com/1200x/7f/75/6b/7f756b24abb992d779d0f7f89d43c9fe.jpg" },
+  { id: 2, src: "https://i.pinimg.com/736x/4c/a9/81/4ca981f8fd9314a3857b8c3d94007b0e.jpg" },
+  { id: 3, src: "https://i.pinimg.com/1200x/cd/0e/d6/cd0ed6938f3dc2cd11ca2a7f63e9eb67.jpg" },
+  { id: 4, src: "https://i.pinimg.com/1200x/13/dc/95/13dc9580ebff657ab874ae7d37d80b54.jpg" },
+  { id: 5, src: "https://5.imimg.com/data5/SELLER/Default/2024/9/451437705/RL/EQ/WC/130639282/samba-wheat-rava-1000x1000.jpg" },
+  { id: 6, src: "https://i.pinimg.com/1200x/45/a8/b5/45a8b5aa9108cb1db4466a8e2899a983.jpg" },
+  { id: 7, src: "https://i.pinimg.com/736x/09/a5/3d/09a53d5e8cd471d7bed296d09f884708.jpg" },
+  { id: 8, src: "https://i.pinimg.com/1200x/dd/65/1e/dd651ec70c9cb2afdd8de27603061ecd.jpg" },
+  { id: 9, src: "https://i.pinimg.com/736x/5f/72/51/5f7251937308408c6d44a88942df3d57.jpg" },
+  { id: 10, src: "https://i.pinimg.com/736x/3e/64/4d/3e644d0701a187e2756391dafbc739d5.jpg" },
+  { id: 11, src: "https://i.pinimg.com/736x/b9/ff/c3/b9ffc35725bb0a41031a825c1c4d76d4.jpg" },
+  { id: 12, src: "https://i.pinimg.com/736x/71/56/c8/7156c8bc4f413b69f2b43ff6976e36f1.jpg" },
+  { id: 13, src: "https://i.pinimg.com/1200x/af/16/0c/af160cfd9802b3498007662f9fcb5560.jpg" },
+  { id: 14, src: "https://i.pinimg.com/736x/b2/9b/03/b29b03746f2c4c8a312a007f632eacaa.jpg" },
+  { id: 15, src: "https://i.pinimg.com/1200x/de/61/d6/de61d6c893bffa8c509a162db3017e44.jpg" },
+  { id: 16, src: "https://i.pinimg.com/1200x/5b/b7/f8/5bb7f83ea04482e62c587ce660a40252.jpg" },
 
 ];
 

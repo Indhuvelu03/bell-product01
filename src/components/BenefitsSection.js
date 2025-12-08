@@ -7,10 +7,26 @@ import styles from './BenefitsSection.module.css';
 const BenefitIcon = ({ children }) => <div className={styles.benefitIcon}>{children}</div>;
 
 const benefits = [
-    { title: "Authentic Taste", text: "Delivering traditional South Indian flavors through our signature Appalam and snack range." },
-    { title: "Product Variety", text: "From Appalam to chips, pappads, asafoetida, and whole wheat rava." },
-    { title: "Customer Trust", text: "Loved by families across India and recognized for consistency and reliability." },
-    { title: "Manufacturers and Suppliers", text: "We Manufacture and supply crispy chips, flavorful pappads, pure asafoetida, and wholesome whole wheat rava." }
+    { 
+        title: "Authentic Taste", 
+        text: "Delivering traditional South Indian flavors through our signature Appalam and snack range.",
+        icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+    },
+    { 
+        title: "Product Variety", 
+        text: "From Appalam to chips, pappads, asafoetida, and whole wheat rava.",
+        icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+    },
+    { 
+        title: "Customer Trust", 
+        text: "Loved by families across India and recognized for consistency and reliability.",
+        icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+    },
+    { 
+        title: "Manufacturers and Suppliers", 
+        text: "We Manufacture and supply crispy chips, flavorful pappads, pure asafoetida, and wholesome whole wheat rava.",
+        icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+    }
 ];
 
 // Animation variants
@@ -150,8 +166,7 @@ const BenefitsSection = () => {
                   variants={cardVariants}
                 >
                     <BenefitIcon>
-                        {/* Placeholder Icon */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-utensils"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 21v-3"/><path d="M15 2v10c0 .5.2 1 .5 1.4l2.5 2.5V21h3v-4.1l2.5-2.5c.3-.4.5-.9.5-1.4V2"/></svg>
+                        {benefit.icon}
                     </BenefitIcon>
                     <h3>{benefit.title}</h3>
                     <p>{benefit.text}</p>
@@ -172,7 +187,7 @@ const BenefitsSection = () => {
               variants={mainImageVariants}
             >
               <img 
-                src="https://images.unsplash.com/photo-1630409351241-e90e7f5e434d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="https://i.pinimg.com/1200x/a4/b6/48/a4b648a6aaee2f2b38a02e96c607751a.jpg" 
                 alt="Bell Brand Appalam" 
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
               />
@@ -183,7 +198,7 @@ const BenefitsSection = () => {
                   variants={topRightImageVariants}
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    src="https://i.pinimg.com/1200x/c8/79/f5/c879f5c6f858a0197006e4178185f60e.jpg" 
                     alt="Bell Brand Chips" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
                   />
@@ -193,7 +208,7 @@ const BenefitsSection = () => {
                   variants={bottomRightImageVariants}
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    src="https://i.pinimg.com/1200x/dd/65/1e/dd651ec70c9cb2afdd8de27603061ecd.jpg" 
                     alt="Bell Brand Papad" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
                   />

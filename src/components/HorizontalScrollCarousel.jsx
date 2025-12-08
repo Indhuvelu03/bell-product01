@@ -269,8 +269,7 @@ const products = [
     name: "Bell Appalam",
     description:
       "Authentic South Indian Appalams, crafted for premium taste and crisp texture.",
-    image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/736x/6b/2d/13/6b2d1315908c659fbb8ad399d285cff0.jpg",
     features: [
       "100% Natural Ingredients",
       "No Preservatives",
@@ -283,8 +282,7 @@ const products = [
     name: "Bell Vadam",
     description:
       "Traditional crunch of Bell Vadam. Sun-dried and seasoned to perfection.",
-    image:
-      "https://images.unsplash.com/photo-1625398407796-82650a8c135f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/1200x/4d/0b/e8/4d0be802a226fe0526d1bf708e08aefb.jpg",
     features: [
       "Sun-Dried Naturally",
       "Traditional Recipe",
@@ -297,8 +295,7 @@ const products = [
     name: "Bell Chips",
     description:
       "Crispy and flavorful Bell Chips, perfect snack for any time of the day.",
-    image:
-      "https://images.unsplash.com/photo-1621447504864-d8686e12698c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/736x/e3/57/4a/e3574aba8c36e00df7c13171e69e3af4.jpg",
     features: [
       "Crunchy Texture",
       "Multiple Flavors",
@@ -311,8 +308,7 @@ const products = [
     name: "Bell Rava",
     description:
       "Finely milled Bell Rava, essential for delicious upma and dosa.",
-    image:
-      "https://images.unsplash.com/photo-1509358271058-aedd22b89f8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/736x/2c/92/52/2c9252ea7b3bf1bda000e833290f9533.jpg",
     features: [
       "Premium Quality Wheat",
       "Fine & Coarse Options",
@@ -325,8 +321,7 @@ const products = [
     name: "Bell Asafoetida",
     description:
       "Pure and aromatic asafoetida for authentic South Indian cooking.",
-    image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://i.pinimg.com/736x/2e/7c/9b/2e7c9bff57be90c0ab62fe8b7b39a224.jpg",
     features: [
       "Strong Aroma",
       "Enhances Flavor",
