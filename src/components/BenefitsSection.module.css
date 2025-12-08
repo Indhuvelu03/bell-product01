@@ -15,11 +15,11 @@
 }
 
 .heading {
-    font-size: 58px; 
-    font-weight: 700;
+    font-size: 48px; 
+    font-weight: 600;
     color: var(--color-heading-dark); 
     line-height: 1.1;
-    margin-bottom: 5px; 
+    margin-bottom: 0px; 
     text-align: left; /* Align the heading to the left */
     margin-left: 0; /* Remove any centering margin */
 }

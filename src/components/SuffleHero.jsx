@@ -35,12 +35,12 @@ const ShuffleHero = () => {
     <section className={styles.heroSection}>
         <div className={styles.heroTextContent}>
           <h1 className="heading-font">
-            Happy With <span className="text-highlight">Delicious Food</span> And Get New Experiences With Asian Food
+            Experience Authentic <span className="text-highlight">South Indian Flavors</span> With Bell Brand Traditional Foods
           </h1>
           <p>
-            Exploring new food with different transition form all Asian country especially
-            from Cambodia chat you can try at this place and get a good price from us as well 
-            we will make a good impact to our customers
+            Discover the rich taste of authentic South Indian cuisine with our premium range of 
+            traditional products. From crispy Appalam to aromatic spices and wholesome wheat rava, 
+            we bring you the finest quality ingredients crafted with time-honored recipes and modern hygiene standards.
           </p>
           <div className={styles.heroActions}>
             {/* <button 

@@ -67,8 +67,8 @@ const HorizontalScrollCarousel = () => {
           // position: "sticky",
           top: 0,
           zIndex: 20,
-          paddingTop: isMobile ? "0.25rem" : "2rem",
-          paddingBottom: isMobile ? "0.25rem" : "1rem",
+          paddingTop: isMobile ? "4rem" : "10rem",
+          paddingBottom: isMobile ? "2rem" : "2rem",
           textAlign: "center",
         }}
       >
@@ -79,6 +79,7 @@ const HorizontalScrollCarousel = () => {
             letterSpacing: "0.1em",
             color: "#ec2d33",
             padding: "6px 16px",
+            marginBottom: isMobile ? "0.5rem" : "1rem",
             fontWeight: "600",
             background: "rgba(62, 63, 63, 0.1)",
           }}
@@ -90,7 +91,8 @@ const HorizontalScrollCarousel = () => {
             fontSize: isMobile ? "1.5rem" : isTablet ? "1.875rem" : "2.25rem",
             fontWeight: "bold",
             color: "black",
-            marginTop: isMobile ? "0.25rem" : "0.5rem",
+            marginTop: isMobile ? "1rem" : "2rem",
+          
           }}
         >
           Product Gallery
@@ -279,7 +281,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Bell Vadam",
+    name: "Bell Papad",
     description:
       "Traditional crunch of Bell Vadam. Sun-dried and seasoned to perfection.",
     image: "https://i.pinimg.com/1200x/4d/0b/e8/4d0be802a226fe0526d1bf708e08aefb.jpg",
@@ -292,7 +294,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Bell Chips",
+    name: "Masala Chips",
     description:
       "Crispy and flavorful Bell Chips, perfect snack for any time of the day.",
     image: "https://i.pinimg.com/736x/e3/57/4a/e3574aba8c36e00df7c13171e69e3af4.jpg",
@@ -305,7 +307,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Bell Rava",
+    name: "Whole Wheat Rava",
     description:
       "Finely milled Bell Rava, essential for delicious upma and dosa.",
     image: "https://i.pinimg.com/736x/2c/92/52/2c9252ea7b3bf1bda000e833290f9533.jpg",
@@ -318,7 +320,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Bell Asafoetida",
+    name: "Asafoetida",
     description:
       "Pure and aromatic asafoetida for authentic South Indian cooking.",
     image: "https://i.pinimg.com/736x/2e/7c/9b/2e7c9bff57be90c0ab62fe8b7b39a224.jpg",

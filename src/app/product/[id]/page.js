@@ -529,10 +529,11 @@ const styles = {
   
   nutritionTdValueCell: {
     textAlign: 'right',
+    fontSize: '1.2rem',
     fontWeight: '700',
     color: '#3f4195',
-    fontFamily: theme.fonts.heading,
-    fontSize: '1.1rem',
+    fontFamily: theme.fonts.body,
+    
   },
   
   // Mobile Card View - Hidden on Desktop
@@ -827,7 +828,7 @@ export default function ProductDetails() {
             text-align: right;
             font-weight: 700;
             color: #3f4195;
-            font-family: "Playfair Display", serif;
+            font-family: "sans-serif;
             font-size: 1.1rem;
           }
           
@@ -1129,7 +1130,7 @@ export default function ProductDetails() {
                     color: theme.colors.primary,
                     fontSize: '1.1rem',
                     fontWeight: '700',
-                    fontFamily: theme.fonts.heading,
+                    fontFamily: 'sans-serif',
                     background: theme.colors.white,
                     boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
                     display: 'inline-block'
