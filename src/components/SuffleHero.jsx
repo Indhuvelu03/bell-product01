@@ -111,7 +111,7 @@ const squareData = [
   { id: 10, src: "https://i.pinimg.com/736x/3e/64/4d/3e644d0701a187e2756391dafbc739d5.jpg", alt: "wheat puttu" },
   { id: 11, src: "https://i.pinimg.com/736x/b9/ff/c3/b9ffc35725bb0a41031a825c1c4d76d4.jpg", alt: "triangle chips"},
   { id: 12, src: "/papad2.jpeg", alt: "papad2"},
-  { id: 13, src: "https://i.pinimg.com/1200x/af/16/0c/af160cfd9802b3498007662f9fcb560.jpg", alt:"papad stack" },
+  { id: 13, src: "/papad-2.jpg", alt:"papad stack" },
   { id: 14, src: "https://i.pinimg.com/736x/b2/9b/03/b29b03746f2c4c8a312a007f632eacaa.jpg", alt: "tapioca chips"},
   { id: 15, src: "/papad1.jpeg" , alt: "Bell Brand Papad"},
   { id: 16, src: "https://i.pinimg.com/1200x/5b/b7/f8/5bb7f83ea04482e62c587ce660a40252.jpg" , alt: "upma with rava"},
