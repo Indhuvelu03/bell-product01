@@ -23,7 +23,8 @@ const initialFoodItems = [
     category: "Chips",
     name: "Masala Chips",
     description: "Spicy and crunchy Masala Chips enriched with pepper and cumin.",
-    image: "https://i.pinimg.com/1200x/94/f8/f1/94f8f1fa1f07536f20bbeba3c99b1c84.jpg",
+    // image: "https://i.pinimg.com/1200x/94/f8/f1/94f8f1fa1f07536f20bbeba3c99b1c84.jpg",
+    image: "/papad1.jpeg",
     liked: false
   },
   {

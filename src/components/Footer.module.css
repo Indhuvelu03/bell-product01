@@ -134,7 +134,7 @@
 
 .locationItem {
   display: flex;
-  gap: 12px;
+  gap: 5px;
   justify-content: flex-end;
 }
 

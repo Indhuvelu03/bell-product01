@@ -35,7 +35,7 @@ const ShuffleHero = () => {
     <section className={styles.heroSection}>
         <div className={styles.heroTextContent}>
           <h1 className="heading-font">
-            Experience Authentic <span className="text-highlight">South Indian Flavors</span> With Bell Traditional Products
+            Experience Authentic <span className="text-highlight">South Indian Snack</span> With Bell Traditional Products
           </h1>
           <p>
             Discover the rich taste of authentic South Indian cuisine with our premium range of 

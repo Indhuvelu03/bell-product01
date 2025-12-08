@@ -297,7 +297,8 @@ const products = [
     name: "Masala Chips",
     description:
       "Crispy and flavorful Masala Chips, perfect snack for any time of the day.",
-    image: "https://i.pinimg.com/736x/e3/57/4a/e3574aba8c36e00df7c13171e69e3af4.jpg",
+    // image: "https://i.pinimg.com/736x/e3/57/4a/e3574aba8c36e00df7c13171e69e3af4.jpg",
+    image: "/papad2.jpeg",
     features: [
       "Crunchy Texture",
       "Multiple Flavors",

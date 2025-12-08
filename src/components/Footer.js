@@ -98,9 +98,9 @@ const Footer = () => {
               <circle cx="12" cy="10" r="3"/>
             </svg>
             <div>
-              <p>New #3, Hawker Jasan Street</p>
-              <p>Sevenwells, Chennai – 600001</p>
-              <p>Tamil Nadu, India</p>
+              <p>Old no:19, New 37, Pedariar Kovil Street</p>
+              <p>Near Ration Shop, Seven Wells North</p>
+              <p>George Town, Chennai, Tamil Nadu 600001</p>
             </div>
           </div>
         </motion.div>
