@@ -866,7 +866,7 @@ export default function ProductDetails() {
             font-size: 1.3rem;
             font-weight: 700;
             color: #3f4195;
-            font-family: "Playfair Display", serif;
+            font-family: sans-serif;
           }
           
           /* Responsive Styles */
