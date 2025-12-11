@@ -16,6 +16,12 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Bell Brand Appalam",
   description: "Authentic South Indian Appalam and more",
+  icons: {
+    icon: '/brandlogo.png',
+    // shortcut: '/bell-logo.png',
+    // apple: '/bell-logo.png',
+  },
+  
 };
 
 export default function RootLayout({ children }) {
